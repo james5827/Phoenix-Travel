@@ -24,7 +24,7 @@ class CreateVehiclesTable extends Migration
             $table->string('Equipment', 100)->nullable();
             $table->char('License_Required', 2);
 
-            $table->primary('Rego_No');
+            $table->primary('Rego_No', 'Vehicle_pk');
         });
     }
 

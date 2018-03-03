@@ -20,7 +20,7 @@ class CreateToursTable extends Migration
             $table->float('Duration')->nullable();
             $table->string('Route_Map', 256)->nullable();
 
-            $table->primary('Tour_No');
+            $table->primary('Tour_No', 'Tour_pk');
         });
     }
 
