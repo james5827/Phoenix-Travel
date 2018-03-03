@@ -7,31 +7,31 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="{{ url('/') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Tours</a>
+                    <a class="nav-link" href="{{ url('/tours') }}">Tours</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Itineraries</a>
+                    <a class="nav-link" href="{{ url('/itineraries') }}">Itineraries</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Vehicles</a>
+                    <a class="nav-link" href="{{ url('/vehicles') }}">Vehicles</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Trips</a>
+                    <a class="nav-link" href="{{ url('/trips') }}">Trips</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Bookings</a>
+                    <a class="nav-link" href="{{ url('/bookings') }}">Bookings</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Customers</a>
+                    <a class="nav-link" href="{{ url('/customers') }}">Customers</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Staff</a>
+                    <a class="nav-link" href="{{ url('/staff') }}">Staff</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Logout</a>
+                    <a class="nav-link" href="{{ url('/logout') }}">Logout</a>
                 </li>
             </ul>
         </div>

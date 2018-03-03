@@ -10013,10 +10013,6 @@ body {
   padding-top: 60px;
 }
 
-main {
-  min-height: 93%;
-}
-
 footer {
   height: 7%;
   overflow: hidden;
@@ -10024,5 +10020,9 @@ footer {
 
 h1 {
   font-size: 5em;
+}
+
+.test {
+  height: inherit;
 }
 

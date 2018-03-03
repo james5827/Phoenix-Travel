@@ -11,9 +11,13 @@
     @include('partials._nav')
 
 <main>
-    <div class="container">
-        <div class="row">
-            @yield('content')
+    <div class="container test">
+        <div class="row test">
+            <div class="card col-sm-12 test">
+                <div class="card-body test" style="height: 100%;">
+                    @yield('content')
+                </div>
+            </div>
         </div>
     </div>
 </main>
