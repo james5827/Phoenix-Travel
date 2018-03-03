@@ -17,8 +17,8 @@ class CreateTripBookingsTable extends Migration
             $table->char('Trip_Booking_No', 6);
             $table->char('Trip_Id', 6);
             $table->char('Primary_Customer', 6);
-            $table->date('Booking_Date');
-            $table->decimal('Deposit_Amount', 6,2);
+            $table->date('Booking_Date')->nullable();
+            $table->decimal('Deposit_Amount', 6,2)->nullable();
 
             $table->primary('Trip_Booking_No', 'Trip_Booking_pk');
             $table->foreign('Trip_Id', 'TB_Trip_fk')->references('Trip_Id')->on('trips');
