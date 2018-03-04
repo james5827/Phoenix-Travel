@@ -26,4 +26,6 @@
 
 <script src="{{ asset('/js/jquery.min.js') }}"></script>
 </body>
+
+@yield('scripts')
 </html>
