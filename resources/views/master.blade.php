@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row">
             <div class="card col-sm-12">
-                <div class="card-body">
+                <div class="card-body full">
                     @yield('content')
                 </div>
             </div>
@@ -28,4 +28,5 @@
 </body>
 
 @yield('scripts')
+<script type="text/javascript" src="{{asset('/js/responsivetable.js')}}"></script>
 </html>

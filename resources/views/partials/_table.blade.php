@@ -1,5 +1,5 @@
 @if(! empty($attributes))
-    <table class="table table-bordered table-hover">
+    <table class="table table-bordered table-hover" id="responsiveTable">
         <thead>
         <tr>
             @foreach($attributes as $attribute)
