@@ -11,6 +11,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Itinerary extends Model
 {
-    protected $primaryKey = 'Itinerary_No';
+    protected $primaryKey = ['Tour_No', 'Day_No'];
     public $incrementing = false;
 }

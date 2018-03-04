@@ -7,12 +7,11 @@ use Illuminate\Http\Request;
 
 class CustomersController extends Controller
 {
-    public function index()
+    public function index(Customer $c)
     {
         $customers = Customer::get();
-        $c = new Customer;
         $attributes = array_keys($customers[0]->toArray());
 
-        return view('customer.index')->with(['dataset' => $customers, 'attributes' => $attributes, 'controller' => 'customers', 'key' => $c->getKeyName()]);
+        return view('customer.index')->with(['dataset' => $customers, 'attributes' => $attributes, 'controller' => 'customers', 'key' => [$c->getKeyName()]]);
     }
 }

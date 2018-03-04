@@ -10,7 +10,8 @@
             </thead>
             <tbody>
             @foreach($dataset as $data)
-                <tr  class="clickable-table-data" data-href="{{ url($controller."/".$data->$key) }}">
+                {{ $data->Itinerary_No }}
+                <tr  class="clickable-table-data" data-href="{{ $controller."/"}}@foreach($key as $k){{ $data->$k }}/@endforeach">
                     @foreach($attributes as $attribute)
                         <td class="largetd">{{ $data->$attribute }}</td>
                     @endforeach
