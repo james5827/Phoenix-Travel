@@ -35,12 +35,14 @@ h1{
   font-size: 5em;
 }
 
-.test{
-  height: inherit;
-}
-
 .clickable-table-data:hover{
   cursor: pointer;
   text-decoration: underline;
   color: deepskyblue;
 }
+
+#slidetest{
+  height: 100px;
+  overflow: hidden;
+}
+

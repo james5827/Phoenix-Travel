@@ -11,5 +11,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Trip_Booking extends Model
 {
-    //
+    protected $primaryKey = 'Trip_Booking_No';
+    public $incrementing = false;
 }

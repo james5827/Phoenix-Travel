@@ -5,12 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Tour
+ * Class Itinerary
  * @package App
  * @mixin \Eloquent
  */
-class Tour extends Model
+class Itinerary extends Model
 {
-    protected $primaryKey = 'Tour_no';
+    protected $primaryKey = 'Itinerary_No';
     public $incrementing = false;
 }

@@ -11,11 +11,15 @@
     @include('partials._nav')
 
 <main>
-    <div class="container test">
+    <div class="container">
         <div class="row test">
-            <div class="card col-sm-12 test">
-                <div class="card-body test" style="height: 100%;">
+            <div class="card col-sm-12">
+                <div class="card-body">
                     @yield('content')
+
+                    <div id="slidetest">
+                        <h1>Testing</h1>
+                    </div>
                 </div>
             </div>
         </div>
@@ -28,4 +32,13 @@
 </body>
 
 @yield('scripts')
+
+<script>
+    window.onload = test;
+
+    function test()
+    {
+
+    }
+</script>
 </html>
