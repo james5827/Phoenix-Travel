@@ -19,7 +19,6 @@ class VehiclesController extends Controller
 
         $attributes = array_keys($vehicles[0]->toArray());
 
-
-        return view('vehicles.index')->with(['dataset' => $vehicles, 'attributes' => $attributes, 'controller' => 'vehicles']);
+        return view('vehicles.index')->with(['dataset' => $vehicles, 'attributes' => $attributes, 'controller' => 'vehicles', 'key' => Vehicle::getModel()->getKeyName()]);
     }
 }

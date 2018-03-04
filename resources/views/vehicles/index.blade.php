@@ -10,7 +10,7 @@
     function test() {
         let tableRows = document.querySelectorAll('.clickable-table-data');
 
-        for(let i =0; i<val.length; ++i)
+        for(let i =0; i<tableRows.length; ++i)
         {
             tableRows[i].addEventListener('click', function(){
                 window.location = this.dataset.href;

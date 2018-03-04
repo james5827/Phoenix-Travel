@@ -9,7 +9,7 @@
         </thead>
         <tbody>
         @foreach($dataset as $data)
-            <tr  class="clickable-table-data" data-href="{{ url("$controller/$data->Rego_No") }}">
+            <tr  class="clickable-table-data" data-href="{{ url($controller."/".$data->$key) }}">
                 @foreach($attributes as $attribute)
                     <td>{{ $data->$attribute }}</td>
                 @endforeach
