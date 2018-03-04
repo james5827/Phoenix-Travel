@@ -12,7 +12,7 @@
 
 <main>
     <div class="container">
-        <div class="row test">
+        <div class="row">
             <div class="card col-sm-12">
                 <div class="card-body">
                     @yield('content')

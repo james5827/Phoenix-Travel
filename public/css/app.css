@@ -10033,3 +10033,7 @@ h1 {
   overflow: hidden;
 }
 
+main {
+  height: 90vh;
+}
+

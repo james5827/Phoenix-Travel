@@ -16,25 +16,23 @@
                 let div1 = tr[0].firstElementChild.firstElementChild;
                 let div2 = tr[0].lastElementChild.firstElementChild;
 
-
                 let height = 40;
-                console.log(height);
                 if(tr.length > 0) {
 
-                   setTimeout(function(div1, div2, tr){
-                       let interval = setInterval(function(div1, div2, tr){
-                           div1.style.height = height + 'px';
-                           div2.style.height = height + 'px';
+                    setTimeout(function(div1, div2, tr){
+                        let interval = setInterval(function(div1, div2, tr){
+                            div1.style.height = height + 'px';
+                            div2.style.height = height + 'px';
 
-                           --height;
+                            --height;
 
-                           if(height === 0)
-                           {
-                               clearInterval(interval)
-                               tr.parentNode.removeChild(tr);
-                           }
-                       }, 5, div1, div2, tr);
-                   }, 250, div1, div2, tr[0]);
+                            if(height === 0)
+                            {
+                                clearInterval(interval)
+                                tr.parentNode.removeChild(tr);
+                            }
+                        }, 5, div1, div2, tr);
+                    }, 250, div1, div2, tr[0]);
                 }
             });
 
@@ -48,43 +46,100 @@
 
                 let timeout;
                 tableRows[i].addEventListener('mouseenter', function () {
-
                     timeout = setTimeout(function(val){
                         let tr = document.getElementsByClassName('createdRow');
 
-                        if(tr.length > 0) {
-                            val.parentNode.removeChild(tr[0]);
+                        if(tr[0] === val.nextElementSibling)
+                        {
+
+                        }
+                        else
+                        {
+                            createTableElements(val);
+
+
+                            tr = document.getElementsByClassName('createdRow');
+
+                            let newtr;
+                            let oldtr;
+                            if(tr.length === 1)
+                            {
+                                newtr = tr[0];
+
+                                let div1 = newtr.firstElementChild.firstElementChild;
+                                let div2 = newtr.lastElementChild.firstElementChild;
+
+                                let height1 = 0;
+
+
+                                let interval = setInterval(function(div1, div2){
+                                    div1.style.height = height1 + 'px';
+                                    div2.style.height = height1 + 'px';
+
+
+                                    ++height1;
+
+                                    if(height1 === 40)
+                                    {
+                                        clearInterval(interval)
+                                    }
+                                }, 5, div1, div2);
+
+                            }else if(tr[0] === val.nextElementSibling)
+                            {
+                                newtr = tr[0];
+                                oldtr = tr[1];
+                                minonemaxother(newtr, oldtr, val);
+                            }
+                            else
+                            {
+                                newtr = tr[1];
+                                oldtr =tr[0];
+
+                                minonemaxother(newtr, oldtr, val);
+                            }
                         }
 
-                        createTableElements(val);
-
-                        tr = document.getElementsByClassName('createdRow')[0];
-                        let div1 = tr.firstElementChild.firstElementChild;
-                        let div2 = tr.lastElementChild.firstElementChild;
-
-
-                        let height = 0;
-                        let interval = setInterval(function(div1, div2, tr){
-                            div1.style.height = height + 'px';
-                            div2.style.height = height + 'px';
-
-                            ++height;
-
-                            if(height === 40)
-                            {
-                                clearInterval(interval)
-                            }
-                        }, 5, div1, div2, tr);
-
-
-                    }, 350, this);
+                    }, 500, this);
 
                 });
 
-                 tableRows[i].addEventListener('mouseleave', function(){
-                     clearTimeout(timeout);
-                 });
+                tableRows[i].addEventListener('mouseleave', function(){
+                    clearTimeout(timeout);
+                });
             }
+        }
+
+        function minonemaxother(newtr, oldtr, val)
+        {
+            let div1 = newtr.firstElementChild.firstElementChild;
+            let div2 = newtr.lastElementChild.firstElementChild;
+
+            let div3 = oldtr.firstElementChild.firstElementChild;
+            let div4 = oldtr.lastElementChild.firstElementChild;
+
+
+            let height1 = 0;
+            let height2 = 40;
+            let interval = setInterval(function(div1, div2, oldtr){
+                div1.style.height = height1 + 'px';
+                div2.style.height = height1 + 'px';
+
+                div3.style.height = height2 +'px';
+                div4.style.height = height2 +'px';
+
+                ++height1;
+                --height2;
+
+                if(height2 === 0)
+                {
+                    val.parentNode.removeChild(oldtr);
+                }
+                if(height1 === 40)
+                {
+                    clearInterval(interval)
+                }
+            }, 5, div1, div2, oldtr);
         }
 
         function createTableElements(val){
