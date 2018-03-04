@@ -38,3 +38,9 @@ h1{
 .test{
   height: inherit;
 }
+
+.clickable-table-data:hover{
+  cursor: pointer;
+  text-decoration: underline;
+  color: deepskyblue;
+}

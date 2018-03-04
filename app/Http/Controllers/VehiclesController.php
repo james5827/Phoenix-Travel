@@ -17,6 +17,9 @@ class VehiclesController extends Controller
     {
         $vehicles = Vehicle::get();
 
-        return view('vehicles.index')->with(['vehicles' => $vehicles]);
+        $attributes = array_keys($vehicles[0]->toArray());
+
+
+        return view('vehicles.index')->with(['dataset' => $vehicles, 'attributes' => $attributes, 'controller' => 'vehicles']);
     }
 }

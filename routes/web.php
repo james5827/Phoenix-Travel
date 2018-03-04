@@ -16,3 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/vehicles', 'VehiclesController@index');
+
+Route::get('/tours', 'ToursController@index');
+
+Route::get('/trips', 'TripsController@index');

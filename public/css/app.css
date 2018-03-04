@@ -10026,3 +10026,9 @@ h1 {
   height: inherit;
 }
 
+.clickable-table-data:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  color: deepskyblue;
+}
+
