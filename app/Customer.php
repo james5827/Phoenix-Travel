@@ -5,12 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Staff
+ * Class Customer
  * @package App
  * @mixin \Eloquent
  */
-class Staff extends Model
+class Customer extends Model
 {
-    protected $primaryKey = 'Staff_No';
+    protected $primaryKey = 'Customer_Id';
     public $incrementing = false;
 }

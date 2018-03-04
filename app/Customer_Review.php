@@ -11,5 +11,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Customer_Review extends Model
 {
-    //
+    protected $primaryKey = ['Trip_Id', 'Customer_Id'];
+    public $incrementing = false;
 }

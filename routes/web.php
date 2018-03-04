@@ -20,3 +20,11 @@ Route::get('/vehicles', 'VehiclesController@index');
 Route::get('/tours', 'ToursController@index');
 
 Route::get('/trips', 'TripsController@index');
+
+Route::get('/itineraries', 'ItinerariesController@index');
+
+Route::get('/staff', 'StaffController@index');
+
+Route::get('/customers', 'CustomersController@index');
+
+Route::get('/bookings', 'TripBookingsController@index');

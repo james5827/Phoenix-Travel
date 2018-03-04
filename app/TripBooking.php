@@ -5,11 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Trip_Booking
+ * Class TripBooking
  * @package App
  * @mixin \Eloquent
  */
-class Trip_Booking extends Model
+class TripBooking extends Model
 {
     protected $primaryKey = 'Trip_Booking_No';
     public $incrementing = false;
