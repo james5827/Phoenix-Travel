@@ -1,4 +1,5 @@
 <form method="{{ $method }}" action="{{ url($action) }}">
+    {{ csrf_field() }}
     <div class="form-group">
         <label for="Rego_No">Registration Number:</label>
         <input type="text" class="form-control" name="Rego_No" id="Rego_No" value="{{ $vehicle->Rego_No }}" placeholder="Registration Number">

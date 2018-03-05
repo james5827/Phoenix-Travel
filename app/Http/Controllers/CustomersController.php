@@ -12,6 +12,29 @@ class CustomersController extends Controller
         $customers = Customer::get();
         $attributes = array_keys($customers[0]->toArray());
 
-        return view('customer.index')->with(['dataset' => $customers, 'attributes' => $attributes, 'controller' => 'customers', 'key' => [$c->getKeyName()]]);
+        return view('customers.index')->with(['dataset' => $customers, 'attributes' => $attributes, 'controller' => 'customers', 'key' => [$c->getKeyName()]]);
     }
+
+    public function show(Customer $customer)
+    {
+
+    }
+
+    public function create(Customer $customer)
+    {
+        return view('customers.create')->with(['customer' => $customer, 'method' => 'POST', 'action' => 'customers/store']);
+    }
+
+    public function store()
+    {
+
+    }
+
+
+    public function edit(Customer $customer)
+    {
+        return view('customers.edit')->with(['customer' => $customer, 'method' => 'POST', 'action' => 'customers/store']);
+    }
+
+
 }

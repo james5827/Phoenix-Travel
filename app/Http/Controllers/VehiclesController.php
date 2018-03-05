@@ -27,15 +27,14 @@ class VehiclesController extends Controller
         return view('vehicles.create')->with(['vehicle' => $vehicle, 'method' => 'POST', 'action' => 'vehicles/store']);
     }
 
-    public function edit(Vehicle $vehicle)
-    {
-
-        //dd($vehicle->Equipment);
-        return view('vehicles.edit')->with(['vehicle' => $vehicle, 'method' => 'PUT', 'action' => 'vehicles/update']);
-    }
-
     public function store()
     {
 
+    }
+
+    public function edit(Vehicle $vehicle)
+    {
+        //alter forms, needs method field function in order to work html5 form doesn't support put by default
+        return view('vehicles.edit')->with(['vehicle' => $vehicle, 'method' => 'POST', 'action' => 'vehicles/update']);
     }
 }
