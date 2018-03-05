@@ -10049,3 +10049,17 @@ thead td {
   font-size: 1.1em;
 }
 
+table {
+  width: 100%;
+}
+
+input[type=search] {
+  width: 23%;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+}
+
+input[type=search]:focus {
+  width: 100%;
+}
+

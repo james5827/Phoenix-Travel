@@ -143,15 +143,13 @@ function createTableElements(val){
     let div1 = document.createElement('div');
     let div2 = document.createElement('div');
 
-    let updateBtn = document.createElement('button');
-    let deleteBtn = document.createElement('button');
+    let updateBtn = document.createElement('a');
+    let deleteBtn = document.createElement('a');
 
     let colspan1 = document.createAttribute('colspan');
     let colspan2 = document.createAttribute('colspan');
 
     let noOfCols = document.getElementById('responsiveTable').rows[0].cells.length;
-
-    console.log(Math.ceil((noOfCols/2)));
 
     let value;
     if(noOfCols%2 === 0)
@@ -168,6 +166,16 @@ function createTableElements(val){
 
     updateBtn.className = "btn-primary btn btn-block btn-md";
     deleteBtn.className = "btn-danger btn btn-block btn-md";
+
+    let updateBtnHref = document.createAttribute('href');
+    let deleteBtnHref = document.createAttribute('href');
+    let parentHref = val.dataset.href;
+
+    updateBtnHref.value = parentHref + 'edit';
+    deleteBtnHref.value = parentHref + 'delete';
+
+    updateBtn.setAttributeNode(updateBtnHref);
+    deleteBtn.setAttributeNode(deleteBtnHref);
 
     td1.setAttributeNode(colspan1);
     td2.setAttributeNode(colspan2);

@@ -24,9 +24,9 @@
 
 @include('partials._footer')
 
-<script src="{{ asset('/js/jquery.min.js') }}"></script>
+
 </body>
 
-@yield('scripts')
-<script type="text/javascript" src="{{asset('/js/responsivetable.js')}}"></script>
+@stack('scripts')
+<script src="{{ asset('/js/jquery.min.js') }}"></script>
 </html>

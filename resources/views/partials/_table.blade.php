@@ -21,3 +21,7 @@
         </table>
     </div>
 @endif
+
+@push('scripts')
+<script src="{{ asset('/js/responsivetable.js') }}"></script>
+@endpush
