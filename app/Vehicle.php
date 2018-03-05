@@ -14,4 +14,9 @@ class Vehicle extends Model
 {
     protected $primaryKey = 'Rego_No';
     public $incrementing = false;
+
+    public function trips()
+    {
+        return $this->hasMany(Trip::class, 'Rego_No');
+    }
 }

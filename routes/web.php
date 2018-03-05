@@ -16,6 +16,8 @@ Route::get('/', function () {
 });
 
 Route::get('/vehicles', 'VehiclesController@index');
+Route::get('/vehicles/create', 'VehiclesController@create');
+Route::get('/vehicles/{vehicle}/edit', 'VehiclesController@edit');
 Route::get('/vehicles/{vehicle}', 'VehiclesController@show');
 
 Route::get('/tours', 'ToursController@index');

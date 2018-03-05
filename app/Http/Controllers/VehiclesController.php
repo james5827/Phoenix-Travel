@@ -18,6 +18,24 @@ class VehiclesController extends Controller
 
     public function show(Vehicle $vehicle)
     {
-        return view('vehicles.show')->with(['vehicle'=>$vehicle, 'Rego_No' => $vehicle->Rego_No]);
+        dd($vehicle->trips);
+        return view('vehicles.show')->with(['vehicle' => $vehicle]);
+    }
+
+    public function create(Vehicle $vehicle)
+    {
+        return view('vehicles.create')->with(['vehicle' => $vehicle, 'method' => 'POST', 'action' => 'vehicles/store']);
+    }
+
+    public function edit(Vehicle $vehicle)
+    {
+
+        //dd($vehicle->Equipment);
+        return view('vehicles.edit')->with(['vehicle' => $vehicle, 'method' => 'PUT', 'action' => 'vehicles/update']);
+    }
+
+    public function store()
+    {
+
     }
 }
