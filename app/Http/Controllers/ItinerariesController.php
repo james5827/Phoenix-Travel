@@ -15,4 +15,6 @@ class ItinerariesController extends Controller
 
         return view('itineraries.index')->with(['dataset' => $itineraries, 'attributes' => $attributes, 'controller' => 'itineraries', 'key' => $i->getKeyName()]);
     }
+
+    public function
 }

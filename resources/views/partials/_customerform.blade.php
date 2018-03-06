@@ -1,4 +1,5 @@
 <form method="{{ $method }}" action="{{ $action }}">
+    {{ csrf_field() }}
     <div class="form-group">
         <label for="customer_id">Customer Id</label>
         <input type="number" class="form-control" name="customer_id" id="customer_id" value="{{ $customer->Customer_Id }}" placeholder="Customer Id">

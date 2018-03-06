@@ -18,4 +18,9 @@ class Trip extends Model
     {
         return $this->hasOne(Vehicle::class, 'Rego_No');
     }
+
+    public function tour()
+    {
+        return $this->hasOne(Tour::class, 'Tour_No');
+    }
 }

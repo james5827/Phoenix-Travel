@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('master');
 });
 
+//FIX ROUTE CREATE AND UPDATE THEY SHOULD NOT BE GET
+
 Route::get('/vehicles', 'VehiclesController@index');
 Route::get('/vehicles/create', 'VehiclesController@create');
 Route::get('/vehicles/update', 'VehiclesController@update');
@@ -24,10 +26,17 @@ Route::get('/vehicles/{vehicle}', 'VehiclesController@show');
 
 Route::get('/tours', 'ToursController@index');
 Route::get('/tours/create', 'ToursController@create');
+Route::get('/tours/update', 'ToursController@update');
+Route::get('/tours/store', 'ToursController@store');
 Route::get('/tours/{tour}/edit', 'ToursController@edit');
 Route::get('/tours/{tour}', 'ToursController@show');
 
 Route::get('/trips', 'TripsController@index');
+Route::get('/trips/create', 'TripsController@create');
+Route::get('/trips/update', 'TripsController@update');
+Route::get('/trips/store', 'TripsController@store');
+Route::get('/trips/{trip}/edit', 'TripsController@edit');
+Route::get('/trips/{trip}', 'TripsController@show');
 
 Route::get('/itineraries', 'ItinerariesController@index');
 
