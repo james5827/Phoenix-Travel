@@ -1,45 +1,75 @@
-<form method="{{ $method }}" action="{{ $action }}">
+<form method="POST" action="{{ url($action) }}">
     {{ csrf_field() }}
+    {{ method_field($method) }}
     <div class="form-group">
-        <label for="customer_id">Customer Id</label>
-        <input type="number" class="form-control" name="customer_id" id="customer_id" value="{{ $customer->Customer_Id }}" placeholder="Customer Id">
+        <label for="Customer_Id">Customer Id</label>
+        <input type="number" class="form-control" name="Customer_Id" id="Customer_Id" value="{{ old('Customer_Id', $customer->Customer_Id) }}" placeholder="Customer Id">
     </div>
+
+    @include('partials._error', ['field' => 'Customer_Id'])
+
     <div class="form-group">
-        <label for="first_name">First Name</label>
-        <input type="text" class="form-control" name="first_name" id="first_name" value="{{ $customer->First_Name }}" placeholder="Customer First Name">
+        <label for="First_Name">First Name</label>
+        <input type="text" class="form-control" name="First_Name" id="First_Name" value="{{ old('First_Name', $customer->First_Name) }}" placeholder="Customer First Name">
     </div>
+
+    @include('partials._error', ['field' => 'First_Name'])
+
     <div class="form-group">
-        <label for="middle_initial">Middle Initial</label>
-        <input type="text" class="form-control" name="middle_initial" id="middle_initial" value="{{ $customer->Middle_Initial }}" placeholder="Customer Middle Initial">
+        <label for="Middle_Initial">Middle Initial</label>
+        <input type="text" class="form-control" name="Middle_Initial" id="Middle_Initial" value="{{ old('Middle_Initial', $customer->Middle_Initial) }}" placeholder="Customer Middle Initial">
     </div>
+
+    @include('partials._error', ['field' => 'Middle_Initial'])
+
     <div class="form-group">
-        <label for="">Last Name</label>
-        <input type="text" class="form-control" name="last_name" id="last_name" value="{{ $customer->Last_Name }}" placeholder="Customer Last Name">
+        <label for="Last_Name">Last Name</label>
+        <input type="text" class="form-control" name="Last_Name" id="Last_Name" value="{{ old('Last_Name', $customer->Last_Name) }}" placeholder="Customer Last Name">
     </div>
+
+    @include('partials._error', ['field' => 'Last_Name'])
+
     <div class="form-group">
-        <label for="street_no">Street Number</label>
-        <input type="number" class="form-control" name="street_no" id="street_no" value="{{ $customer->Street_No }}" placeholder="Customer Street Number">
+        <label for="Street_No">Street Number</label>
+        <input type="number" class="form-control" name="Street_No" id="Street_No" value="{{ old('Street_No', $customer->Street_No) }}" placeholder="Customer Street Number">
     </div>
+
+    @include('partials._error', ['field' => 'Street_No'])
+
     <div class="form-group">
-        <label for="street_name">Street Name</label>
-        <input type="text" class="form-control" name="street_name" id="street_name" value="{{ $customer->Street_Name }}" placeholder="Customer Street Number">
+        <label for="Street_Name">Street Name</label>
+        <input type="text" class="form-control" name="Street_Name" id="Street_Name" value="{{ old('Street_Name', $customer->Street_Name) }}" placeholder="Customer Street Number">
     </div>
+
+    @include('partials._error', ['field' => 'Street_Name'])
+
     <div class="form-group">
-        <label for="suburb">Suburb</label>
-        <input type="text" class="form-control" name="suburb" id="suburb" value="{{ $customer->Suburb }}" placeholder="Customer Suburb">
+        <label for="Suburb">Suburb</label>
+        <input type="text" class="form-control" name="Suburb" id="Suburb" value="{{ old('Suburb', $customer->Suburb) }}" placeholder="Customer Suburb">
     </div>
+
+    @include('partials._error', ['field' => 'Suburb'])
+
     <div class="form-group">
-        <label for="postcode">Postcode</label>
-        <input type="text" class="form-control" name="postcode" id="postcode" value="{{ $customer->Postcode }}" placeholder="Customer Postcode">
+        <label for="Postcode">Postcode</label>
+        <input type="text" class="form-control" name="Postcode" id="Postcode" value="{{ old('Postcode', $customer->Postcode) }}" placeholder="Customer Postcode">
     </div>
+
+    @include('partials._error', ['field' => 'Trip_Booking_No'])
+
     <div class="form-group">
-        <label for="email">Email</label>
-        <input type="text" class="form-control" name="email" id="email" value="{{ $customer->Email }}" placeholder="Customer Email">
+        <label for="Email">Email</label>
+        <input type="text" class="form-control" name="Email" id="Email" value="{{ old('Email', $customer->Email) }}" placeholder="Customer Email">
     </div>
+
+    @include('partials._error', ['field' => 'Postcode'])
+
     <div class="form-group">
-        <label for="phone">Phone</label>
-        <input type="text" class="form-control" name="phone" id="phone" value="{{ $customer->Phone }}" placeholder="Customer Phone Number">
+        <label for="Phone">Phone</label>
+        <input type="text" class="form-control" name="Phone" id="Phone" value="{{ old('Phone', $customer->Phone) }}" placeholder="Customer Phone Number">
     </div>
+
+    @include('partials._error', ['field' => 'Phone'])
 
     <div class="form-group">
         <button type="button" class="btn btn-success btn-block" value="">Authorized</button>

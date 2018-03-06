@@ -1,29 +1,40 @@
-<form action="{{ $action }}" method="{{ $method }}">
+<form action="{{ url($action) }}" method="POST">
     {{ csrf_field() }}
+    {{ method_field($method) }}
     <div class="form-group">
-        <label for="tour_number">Tour Number</label>
-        <input type="number" class="form-control" name="tour_number" id="tour_number" value="{{ $tour->Tour_no }}" placeholder="Tour Number">
+        <label for="Tour_no">Tour Number</label>
+        <input type="number" class="form-control" name="Tour_no" id="Tour_no" value="{{ old('Tour_no', $tour->Tour_no) }}" placeholder="Tour Number">
     </div>
 
-    <div class="form-group">
-        <label for="tour_name">Tour Name</label>
-        <input type="text" class="form-control" name="tour_name" id="tour_name" value="{{ $tour->Tour_Name }}" placeholder="Tour Name">
-    </div>
+    @include('partials._error', ['field' => 'Tour_no'])
 
     <div class="form-group">
-        <label for="description">Tour Description</label>
-        <textarea class="form-control" name="description" id="description">{{ $tour->Description }}</textarea>
+        <label for="Tour_Name">Tour Name</label>
+        <input type="text" class="form-control" name="Tour_Name" id="Tour_Name" value="{{ old('Tour_Name', $tour->Tour_Name) }}" placeholder="Tour Name">
     </div>
 
-    <div class="form-group">
-        <label for="duration">Duration</label>
-        <input type="number" class="form-control" name="duration" id="duration" value="{{ $tour->Duration }}" placeholder="Tour Duration">
-    </div>
+    @include('partials._error', ['field' => 'Tour_Name'])
 
     <div class="form-group">
-        <label for="route_map">Route Map</label>
-        <input type="text" class="form-control" name="route_map" id="route_map" value="{{ $tour->Route_Map }}" placeholder="Route Map">
+        <label for="Description">Tour Description</label>
+        <textarea class="form-control" name="Description" id="Description">{{ old('Description', $tour->Description) }}</textarea>
     </div>
+
+    @include('partials._error', ['field' => 'Description'])
+
+    <div class="form-group">
+        <label for="Duration">Duration</label>
+        <input type="number" class="form-control" name="Duration" id="Duration" value="{{ old('Duration', $tour->Duration) }}" placeholder="Tour Duration">
+    </div>
+
+    @include('partials._error', ['field' => 'Duration'])
+
+    <div class="form-group">
+        <label for="Route_Map">Route Map</label>
+        <input type="text" class="form-control" name="Route_Map" id="Route_Map" value="{{ old('Route_Map', $tour->Route_Map) }}" placeholder="Route Map">
+    </div>
+
+    @include('partials._error', ['field' => 'Route_Map'])
 
     <div class="text-center">
         <button type="button" class="btn btn-danger col-sm-5" style="margin: 2.5%;">Clear</button>

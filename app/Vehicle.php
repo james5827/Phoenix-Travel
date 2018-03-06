@@ -17,7 +17,14 @@ class Vehicle extends Model
 
     protected $fillable = [
         'Rego_No',
-
+        'VIN',
+        'Make',
+        'Model',
+        'Year',
+        'Capacity',
+        'Fuel_Type',
+        'Equipment',
+        'License_Required'
     ];
 
     public function trips()

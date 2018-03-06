@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TourRequest;
 use App\Tour;
 use Illuminate\Http\Request;
 
@@ -19,9 +20,19 @@ class ToursController extends Controller
         return view('tours.create')->with(['tour' => $tour, 'method' => 'POST', 'action' => 'tours/store']);
     }
 
+    public function store(TourRequest $tour)
+    {
+
+    }
+
     public function edit(Tour $tour)
     {
         //alter forms, needs method field function in order to work html5 form doesn't support put by default
         return view('tours.edit')->with(['tour' => $tour, 'method' => 'POST', 'action' => 'tours/update']);
+    }
+
+    public function update(TourRequest $request)
+    {
+
     }
 }

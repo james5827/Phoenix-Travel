@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\Http\Requests\CustomerRequest;
 use Illuminate\Http\Request;
 
 class CustomersController extends Controller
@@ -25,7 +26,7 @@ class CustomersController extends Controller
         return view('customers.create')->with(['customer' => $customer, 'method' => 'POST', 'action' => 'customers/store']);
     }
 
-    public function store()
+    public function store(CustomerRequest $request)
     {
 
     }
@@ -36,5 +37,8 @@ class CustomersController extends Controller
         return view('customers.edit')->with(['customer' => $customer, 'method' => 'POST', 'action' => 'customers/store']);
     }
 
+    public function update(CustomerRequest $request)
+    {
 
+    }
 }

@@ -27,10 +27,15 @@ class TripsController extends Controller
         $vehiclesSel = Vehicle::select(['Rego_No', 'Model'])->get()->toArray();
         $toursSel = Tour::select(['Tour_No', 'Tour_Name'])->get()->toArray();
 
-        $select_boxes = ["Vehicle " => $vehiclesSel, 'Tour' => $toursSel];
+        $select_boxes = ["Rego_No " => $vehiclesSel, 'Tour_No' => $toursSel];
 
         //dd($select_boxes);
-        return view('trips.create')->with(['trip' => $trip, 'method' => 'POST', 'action' => '/tours/store', 'select_boxes' => $select_boxes]);
+        return view('trips.create')->with([
+                'trip' => $trip, 'method' => 'POST',
+                'action' => '/tours/store',
+                'select_boxes' => $select_boxes
+            ]
+        );
     }
 
     public function store()

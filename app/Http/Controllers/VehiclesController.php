@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\VehicleRequest;
 use App\Vehicle;
 use Illuminate\Http\Request;
 
@@ -24,19 +25,24 @@ class VehiclesController extends Controller
 
     public function create(Vehicle $vehicle)
     {
-        $select_boxes = ['Fuel Type' => [['Diesel'], ['Petrol']]];
+        $select_boxes = ['Fuel_Type' => [['Diesel'], ['Petrol']]];
 
         return view('vehicles.create')->with(['vehicle' => $vehicle, 'method' => 'POST', 'action' => 'vehicles/store', 'select_boxes' => $select_boxes]);
     }
 
-    public function store(Request $request)
+    public function store(VehicleRequest $request)
     {
         dd($request->all());
     }
 
     public function edit(Vehicle $vehicle)
     {
-        //alter forms, needs method field function in order to work html5 form doesn't support put by default
-        return view('vehicles.edit')->with(['vehicle' => $vehicle, 'method' => 'POST', 'action' => 'vehicles/update']);
+        $select_boxes = ['Fuel Type' => [['Diesel'], ['Petrol']]];
+        return view('vehicles.edit')->with(['vehicle' => $vehicle, 'method' => 'PUT', 'action' => 'vehicles/update', 'select_boxes' => $select_boxes]);
+    }
+
+    public function update(VehicleRequest $request)
+    {
+
     }
 }

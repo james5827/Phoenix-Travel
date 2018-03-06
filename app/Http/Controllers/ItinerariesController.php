@@ -21,7 +21,7 @@ class ItinerariesController extends Controller
     {
         $tour_sel = Tour::select(['Tour_no', 'Tour_Name'])->get()->toArray();
 
-        $select_boxes = ['Tour Number' => $tour_sel];
+        $select_boxes = ['Tour_no' => $tour_sel];
 
 
         return view('itineraries.create')->with(['itinerary' => $itinerary, 'method' => 'POST', 'action' => 'itineraries.store', 'select_boxes' => $select_boxes]);
