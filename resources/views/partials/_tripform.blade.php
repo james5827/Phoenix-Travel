@@ -22,4 +22,9 @@
         <label for="Standard_Amount">Standard Amount</label>
         <input type="text" class="form-control" name="Standard_Amount" id="Standard_Amount" value="{{ $trip->Standard_Amount }}" placeholder="Standard Amount For Trip">
     </div>
+
+    <div class="text-center">
+        <button type="button" class="btn btn-danger col-sm-5" style="margin: 2.5%;">Clear</button>
+        <button type="submit" class="btn btn-primary col-sm-5" style="margin: 2.5%;">Commit</button>
+    </div>
 </form>
