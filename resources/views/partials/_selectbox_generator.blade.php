@@ -3,12 +3,9 @@
         <label for="{{ $key }}">{{ $key }}</label>
         <select class="form-control" name="{{ $key }}" id="{{ $key }}">
             @foreach($select_box as $select_line)
-                <option>
-                    @foreach($select_line as $select_line_data)
-                        {{ $select_line_data }}
-                    @endforeach
-                </option>
+                <option value="{{ current($select_line) }}">@foreach($select_line as $select_line_data){{ $select_line_data }} @endforeach</option>
             @endforeach
         </select>
     </div>
 @endforeach
+

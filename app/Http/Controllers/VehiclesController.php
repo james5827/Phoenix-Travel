@@ -24,12 +24,14 @@ class VehiclesController extends Controller
 
     public function create(Vehicle $vehicle)
     {
-        return view('vehicles.create')->with(['vehicle' => $vehicle, 'method' => 'POST', 'action' => 'vehicles/store']);
+        $select_boxes = ['Fuel Type' => [['Diesel'], ['Petrol']]];
+
+        return view('vehicles.create')->with(['vehicle' => $vehicle, 'method' => 'POST', 'action' => 'vehicles/store', 'select_boxes' => $select_boxes]);
     }
 
-    public function store()
+    public function store(Request $request)
     {
-
+        dd($request->all());
     }
 
     public function edit(Vehicle $vehicle)

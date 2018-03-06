@@ -5,32 +5,28 @@
         <input type="text" class="form-control" name="Rego_No" id="Rego_No" value="{{ $vehicle->Rego_No }}" placeholder="Registration Number">
     </div>
     <div class="form-group">
-        <label for="vin">Vehicle Identification Number:</label>
-        <input type="text" class="form-control" name="vin" id="vin" value="{{ $vehicle->VIN }}" placeholder="Vehicle Identification Number">
+        <label for="Vin">Vehicle Identification Number:</label>
+        <input type="text" class="form-control" name="Vin" id="Vin" value="{{ $vehicle->VIN }}" placeholder="Vehicle Identification Number">
     </div>
     <div class="form-group">
-        <label for="make">Vehicle Make:</label>
-        <input type="text" class="form-control" name="make" id="make" value="{{ $vehicle->Make }}" placeholder="Make">
+        <label for="Make">Vehicle Make:</label>
+        <input type="text" class="form-control" name="Make" id="Make" value="{{ $vehicle->Make }}" placeholder="Make">
     </div>
     <div class="form-group">
-        <label for="model">Vehicle Model:</label>
-        <input type="text" class="form-control" name="model" id="model" value="{{ $vehicle->Model }}" placeholder="Model">
+        <label for="Model">Vehicle Model:</label>
+        <input type="text" class="form-control" name="Make" id="Make" value="{{ $vehicle->Model }}" placeholder="Model">
     </div>
     <div class="form-group">
-        <label for="year">Year:</label>
-        <input type="number" class="form-control" name="year" id="year" value="{{ $vehicle->Year }}" placeholder="Year">
+        <label for="Year">Year:</label>
+        <input type="number" class="form-control" name="Year" id="Year" value="{{ $vehicle->Year }}" placeholder="Year">
     </div>
     <div class="form-group">
-        <label for="capacity">Vehicle Capacity</label>
-        <input type="number" class="form-control" name="capacity" id="capactiy" value="{{ $vehicle->Capacity }}" placeholder="Capacity">
+        <label for="Capacity">Vehicle Capacity</label>
+        <input type="number" class="form-control" name="Capacity" id="Capactiy" value="{{ $vehicle->Capacity }}" placeholder="Capacity">
     </div>
-    <div class="form-group">
-        <label for="fuel_type">Fuel Type</label>
-        <select class="form-control" name="fuel_type" id="fuel_type">
-            <option>Petrol</option>
-            <option>Diesel</option>
-        </select>
-    </div>
+
+    @include('partials._selectbox_generator')
+
     <div class="form-group">
         <label for="equipment">Equipment:</label>
         <textarea class="form-control" name="equipment" id="equipment" placeholder="Required Vehicle Equipment">{{ $vehicle->Equipment }}</textarea>

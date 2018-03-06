@@ -23,6 +23,7 @@ class ItinerariesController extends Controller
 
         $select_boxes = ['Tour Number' => $tour_sel];
 
+
         return view('itineraries.create')->with(['itinerary' => $itinerary, 'method' => 'POST', 'action' => 'itineraries.store', 'select_boxes' => $select_boxes]);
     }
 
