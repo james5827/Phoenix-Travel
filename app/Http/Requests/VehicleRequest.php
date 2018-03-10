@@ -24,15 +24,15 @@ class VehicleRequest extends FormRequest
     public function rules()
     {
         return [
-            'Rego_No' => 'Required',
-            'VIN' => 'Required',
-            'Make' => 'Required',
-            'Model' => 'Required',
-            'Year' => 'Required',
-            'Capacity' => 'Required',
-            'Fuel_Type' => 'Required',
-            'Equipment' => 'Required',
-            'License_Required' => 'Required'
+            'Rego_No' => 'required',
+            'VIN' => 'required',
+            'Make' => 'required',
+            'Model' => 'required',
+            'Year' => 'required',
+            'Capacity' => 'required',
+            'Fuel_Type' => 'required',
+            'Equipment' => 'required',
+            'License_Required' => 'required'
         ];
     }
 

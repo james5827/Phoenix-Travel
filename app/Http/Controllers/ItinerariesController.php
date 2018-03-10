@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ItineraryRequest;
 use App\Itinerary;
 use App\Tour;
 use Illuminate\Http\Request;
@@ -19,37 +20,51 @@ class ItinerariesController extends Controller
 
     public function create(Itinerary $itinerary)
     {
-        $tour_sel = Tour::select(['Tour_no', 'Tour_Name'])->get()->toArray();
+        $tour_sel = Tour::select(['Tour_No', 'Tour_Name'])->get()->toArray();
 
-        $select_boxes = ['Tour_no' => $tour_sel];
+        $select_boxes = ['Tour_No' => $tour_sel];
 
 
-        return view('itineraries.create')->with(['itinerary' => $itinerary, 'method' => 'POST', 'action' => 'itineraries.store', 'select_boxes' => $select_boxes]);
+        return view('itineraries.create')->with(['itinerary' => $itinerary, 'method' => 'POST', 'action' => 'itineraries/store', 'select_boxes' => $select_boxes]);
     }
 
-    public function store()
+    public function store(ItineraryRequest $request)
     {
+        Itinerary::create($request->all());
 
+        return redirect('itineraries');
     }
 
-    public function edit($Tour_No, $Day_No)
+    public function edit($tour_No, $day_No)
     {
-        $itinerary = Itinerary::where('Tour_No', '=', $Tour_No )->where('Day_No', '=', $Day_No)->first();
+        $itinerary = Itinerary::where('Tour_No', '=', $tour_No )->where('Day_No', '=', $day_No)->first();
 
-        $tour_sel = Tour::select(['Tour_no', 'Tour_Name'])->get()->toArray();
+        $tour_sel = Tour::select(['Tour_No', 'Tour_Name'])->get()->toArray();
 
-        $select_boxes = ['Tour Number' => $tour_sel];
+        $select_boxes = ['Tour_No' => $tour_sel];
 
-        return view('itineraries.edit')->with(['itinerary' => $itinerary, 'method' => 'POST', 'action' => 'itineraries.store', 'select_boxes' => $select_boxes]);
+        return view('itineraries.edit')->with(['itinerary' => $itinerary, 'method' => 'PUT', 'action' => 'itineraries/' . $tour_No . '/' . $day_No . '/update', 'select_boxes' => $select_boxes]);
     }
 
-    public function update()
+    public function update(ItineraryRequest $request, $tour_no, $day_no)
     {
+        $itinerary = Itinerary::where('Tour_No', '=', $tour_no)->where('Day_No', '=', $day_no);
 
+        $itinerary->update($request->except('_token', '_method'));
+
+        return redirect('/itineraries/');
     }
 
-    public function destroy()
+    public function destroy($tour_no, $day_no)
     {
+        $itinerary = Itinerary::where('Tour_No', '=', $tour_no)->where('Day_No', '=', $day_no);
 
+        try {
+            $itinerary->delete();
+         }catch (\Exception $exception) {
+            //TODO: Handle Primary key exception
+        }
+
+        return redirect('/itineraries/');
     }
 }

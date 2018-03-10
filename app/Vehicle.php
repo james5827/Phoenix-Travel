@@ -14,6 +14,7 @@ class Vehicle extends Model
 {
     protected $primaryKey = 'Rego_No';
     public $incrementing = false;
+    public $timestamps = false;
 
     protected $fillable = [
         'Rego_No',

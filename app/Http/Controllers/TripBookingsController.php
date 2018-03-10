@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\Http\Requests\TripBookingRequest;
 use App\Trip;
 use App\TripBooking;
 use Illuminate\Http\Request;
@@ -27,9 +28,11 @@ class TripBookingsController extends Controller
         return view('bookings.create')->with(['Trip_Booking' => $booking, 'method' => 'POST', 'action' => '/bookings/store', 'select_boxes' => $select_boxes]);
     }
 
-    public function store()
+    public function store(TripBookingRequest $request)
     {
+        TripBooking::create($request->all());
 
+        return redirect('/bookings/');
     }
 
     public function edit(TripBooking $booking)
@@ -38,18 +41,25 @@ class TripBookingsController extends Controller
 
         $customer_sel = Customer::select(['Customer_Id', 'First_Name', 'Last_Name'])->get()->toArray();
 
-        $select_boxes = ['Trip Id' => $trip_sel, 'Primary Customer' => $customer_sel];
+        $select_boxes = ['Trip_Id' => $trip_sel, 'Primary_Customer' => $customer_sel];
 
-        return view('bookings.edit')->with(['Trip_Booking' => $booking, 'method' => 'POST', 'action' => '/bookings/update', 'select_boxes' => $select_boxes]);
+        return view('bookings.edit')->with(['Trip_Booking' => $booking, 'method' => 'PUT', 'action' => '/bookings/' . $booking->Trip_Booking_No . '/update', 'select_boxes' => $select_boxes]);
     }
 
-    public function update()
+    public function update(TripBookingRequest $request, TripBooking $booking)
     {
-
+        $booking->update($request->all());
+        return redirect('/bookings/');
     }
 
-    public function destroy()
+    public function destroy(TripBooking $booking)
     {
+        try {
+            $booking->delete();
+        }catch (\Exception $exception) {
+            //TODO: Handle Primary key exception
+        }
 
+        return redirect('/bookings');
     }
 }

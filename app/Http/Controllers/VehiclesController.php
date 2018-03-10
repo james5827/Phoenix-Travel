@@ -32,17 +32,32 @@ class VehiclesController extends Controller
 
     public function store(VehicleRequest $request)
     {
-        dd($request->all());
+        Vehicle::create($request->all());
+
+        return redirect('/vehicles/');
     }
 
     public function edit(Vehicle $vehicle)
     {
-        $select_boxes = ['Fuel Type' => [['Diesel'], ['Petrol']]];
-        return view('vehicles.edit')->with(['vehicle' => $vehicle, 'method' => 'PUT', 'action' => 'vehicles/update', 'select_boxes' => $select_boxes]);
+        $select_boxes = ['Fuel_Type' => [['Diesel'], ['Petrol']]];
+        return view('vehicles.edit')->with(['vehicle' => $vehicle, 'method' => 'PUT', 'action' => 'vehicles/' . $vehicle->Rego_No . '/update', 'select_boxes' => $select_boxes]);
     }
 
-    public function update(VehicleRequest $request)
+    public function update(VehicleRequest $request, Vehicle $vehicle)
     {
+        $vehicle->update($request->all());
 
+        return redirect('/vehicles/');
+    }
+
+    public function destroy(Vehicle $vehicle)
+    {
+        try {
+            $vehicle->delete();
+        }catch (\Exception $exception) {
+            //TODO: Handle Primary key exception
+        }
+
+        return redirect('/vehicles/');
     }
 }

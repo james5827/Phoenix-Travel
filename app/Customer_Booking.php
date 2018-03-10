@@ -13,4 +13,9 @@ class Customer_Booking extends Model
 {
     protected $primaryKey = ['Trip_Booking_No', 'Customer_Id'];
     public $incrementing = false;
+    public $timestamps = false;
+
+    protected $fillable = [
+
+    ];
 }

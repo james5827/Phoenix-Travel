@@ -13,6 +13,7 @@ class Tour extends Model
 {
     protected $primaryKey = 'Tour_no';
     public $incrementing = false;
+    public $timestamps = false;
 
     protected $fillable = [
         'Tour_no',

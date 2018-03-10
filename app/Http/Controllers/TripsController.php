@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TripRequest;
 use App\Tour;
 use App\Trip;
 use App\Vehicle;
@@ -27,20 +28,22 @@ class TripsController extends Controller
         $vehiclesSel = Vehicle::select(['Rego_No', 'Model'])->get()->toArray();
         $toursSel = Tour::select(['Tour_No', 'Tour_Name'])->get()->toArray();
 
-        $select_boxes = ["Rego_No " => $vehiclesSel, 'Tour_No' => $toursSel];
+        $select_boxes = ["Rego_No" => $vehiclesSel, 'Tour_No' => $toursSel];
 
         //dd($select_boxes);
         return view('trips.create')->with([
                 'trip' => $trip, 'method' => 'POST',
-                'action' => '/tours/store',
+                'action' => '/trips/store',
                 'select_boxes' => $select_boxes
             ]
         );
     }
 
-    public function store()
+    public function store(TripRequest $request)
     {
+        Trip::create($request->all());
 
+        return redirect('/trips/');
     }
 
     public function edit(Trip $trip)
@@ -48,18 +51,25 @@ class TripsController extends Controller
         $vehiclesSel = Vehicle::select(['Rego_No', 'Model'])->get()->toArray();
         $toursSel = Tour::select(['Tour_No', 'Tour_Name'])->get()->toArray();
 
-        $select_boxes = ["Vehicle " => $vehiclesSel, 'Tour' => $toursSel];
+        $select_boxes = ["Rego_No" => $vehiclesSel, 'Tour_No' => $toursSel];
 
-        return view('trips.edit')->with(['trip' => $trip, 'method' => 'POST', 'action' => '/tours/update', 'select_boxes' => $select_boxes]);
+        return view('trips.edit')->with(['trip' => $trip, 'method' => 'PUT', 'action' => '/trips/' . $trip->Trip_Id . '/update', 'select_boxes' => $select_boxes]);
     }
 
-    public function update()
+    public function update(TripRequest $request, Trip $trip)
     {
-
+        $trip->update($request->all());
+        return redirect('/trips/');
     }
 
-    public function destroy()
+    public function destroy(Trip $trip)
     {
+        try {
+            $trip->delete();
+        }catch (\Exception $exception) {
+            //TODO: Handle Primary key exception
+        }
 
+        return redirect('/trips/');
     }
 }

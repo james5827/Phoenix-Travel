@@ -39,6 +39,9 @@ function addTableEvents() {
 
         let timeout;
         tableRows[i].addEventListener('mouseenter', function () {
+            let table_form = document.getElementById("table_delete_form");
+            table_form.action = this.dataset.href + "delete";
+
             timeout = setTimeout(function(val){
                 let tr = document.getElementsByClassName('createdRow');
 
@@ -144,7 +147,11 @@ function createTableElements(val){
     let div2 = document.createElement('div');
 
     let updateBtn = document.createElement('a');
-    let deleteBtn = document.createElement('a');
+    let deleteBtn = document.createElement('button');
+
+    let deleteBtnType = document.createAttribute('type');
+    deleteBtnType.value = "submit";
+    deleteBtn.setAttributeNode(deleteBtnType);
 
     let colspan1 = document.createAttribute('colspan');
     let colspan2 = document.createAttribute('colspan');
@@ -168,14 +175,11 @@ function createTableElements(val){
     deleteBtn.className = "btn-danger btn btn-block btn-md";
 
     let updateBtnHref = document.createAttribute('href');
-    let deleteBtnHref = document.createAttribute('href');
     let parentHref = val.dataset.href;
 
     updateBtnHref.value = parentHref + 'edit';
-    deleteBtnHref.value = parentHref + 'delete';
 
     updateBtn.setAttributeNode(updateBtnHref);
-    deleteBtn.setAttributeNode(deleteBtnHref);
 
     td1.setAttributeNode(colspan1);
     td2.setAttributeNode(colspan2);

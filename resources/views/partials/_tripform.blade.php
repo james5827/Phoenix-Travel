@@ -13,7 +13,7 @@
 
     <div class="form-group">
         <label for="Departure_Date">Departure Date</label>
-        <input type="datetime-local" class="form-control" name="Departure_Date" id="Departure_Date" value="{{ old('Departure_Date', $trip->Departure_Date) }}" placeholder="Trip Departure Date">
+        <input type="date" class="form-control" name="Departure_Date" id="Departure_Date" value="{{ old('Departure_Date', $trip->Departure_Date) }}" placeholder="Trip Departure Date">
     </div>
 
     @include('partials._error', ['field' => 'Departure_Date'])

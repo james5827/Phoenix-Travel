@@ -13,6 +13,7 @@ class Customer extends Model
 {
     protected $primaryKey = 'Customer_Id';
     public $incrementing = false;
+    public $timestamps = false;
 
     protected $fillable = [
         'Customer_Id',
