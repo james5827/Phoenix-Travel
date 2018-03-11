@@ -20,7 +20,7 @@ class TripsController extends Controller
 
     public function show(Trip $trip)
     {
-
+        return view('trips.show')->with(['record' => $trip]);
     }
 
     public function create(Trip $trip)

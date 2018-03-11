@@ -19,7 +19,7 @@ class CustomersController extends Controller
 
     public function show(Customer $customer)
     {
-
+        return view('customers.show')->with(['record' => $customer]);
     }
 
     public function create(Customer $customer)

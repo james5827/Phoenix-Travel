@@ -15,7 +15,12 @@ class TripBookingsController extends Controller
         $trip_bookings = TripBooking::get();
         $attributes = array_keys($trip_bookings[0]->toArray());
 
-        return view('bookings.index')->with(['dataset' => $trip_bookings, 'attributes' => $attributes, 'controller' => 'bookings', 'key' => [$tb->getKeyName()]]);
+        return view('bookings.index')->with(['dataset' => $trip_bookings, 'attributes' => $attributes, 'controller' => 'trip_bookings', 'key' => [$tb->getKeyName()]]);
+    }
+
+    public function show(TripBooking $booking)
+    {
+        return view('bookings.show')->with(['record' => $booking]);
     }
 
     public function create(TripBooking $booking)
@@ -32,7 +37,7 @@ class TripBookingsController extends Controller
     {
         TripBooking::create($request->all());
 
-        return redirect('/bookings/');
+        return redirect('/trip_bookings/');
     }
 
     public function edit(TripBooking $booking)
@@ -60,6 +65,6 @@ class TripBookingsController extends Controller
             //TODO: Handle Primary key exception
         }
 
-        return redirect('/bookings');
+        return redirect('/trip_bookings/');
     }
 }

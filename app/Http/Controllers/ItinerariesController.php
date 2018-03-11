@@ -18,6 +18,14 @@ class ItinerariesController extends Controller
         return view('itineraries.index')->with(['dataset' => $itineraries, 'attributes' => $attributes, 'controller' => 'itineraries', 'key' => $i->getKeyName()]);
     }
 
+    public function show($tour_No, $day_No)
+    {
+        $itinerary = Itinerary::where('Tour_No', '=', $tour_No )->where('Day_No', '=', $day_No)->first();
+        $attributes = array_keys($itinerary->toArray());
+
+        return view('itineraries.show')->with(['record' => $itinerary, 'attributes' => $attributes]);
+    }
+
     public function create(Itinerary $itinerary)
     {
         $tour_sel = Tour::select(['Tour_No', 'Tour_Name'])->get()->toArray();

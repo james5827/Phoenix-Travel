@@ -1,6 +1,6 @@
 @extends('master')
 @section('content')
-    <h1>Vehicle {{ $record["Rego_No"] }}</h1>
+    <h1>Trip {{ $record['Trip_Id'] }}</h1>
 
     @include('partials.single_record_table')
 @endsection

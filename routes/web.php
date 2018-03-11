@@ -45,7 +45,7 @@ Route::post('/itineraries/store', 'ItinerariesController@store');
 Route::put('/itineraries/{Tour_No}/{Day_No}/update', 'ItinerariesController@update');
 Route::delete('/itineraries/{Tour_No}/{Day_No}/delete', 'ItinerariesController@destroy');
 Route::get('/itineraries/{Tour_No}/{Day_No}/edit', 'ItinerariesController@edit');
-Route::get('/itineraries/{itinerary}', 'ItinerariesController@show');
+Route::get('/itineraries/{Tour_No}/{Day_No}', 'ItinerariesController@show');
 
 Route::get('/staff', 'StaffController@index');
 
@@ -57,10 +57,10 @@ Route::delete('/customers/{customer}/delete', 'CustomersController@destroy');
 Route::get('/customers/{customer}/edit', 'CustomersController@edit');
 Route::get('/customers/{customer}', 'CustomersController@show');
 
-Route::get('/bookings', 'TripBookingsController@index');
-Route::get('/bookings/create', 'TripBookingsController@create');
-Route::post('/bookings/store', 'TripBookingsController@store');
-Route::put('/bookings/{booking}/update', 'TripBookingsController@update');
-Route::delete('/bookings/{booking}/delete', 'TripsBookingsController@delete');
-Route::get('/bookings/{booking}/edit', 'TripBookingsController@edit');
-Route::get('/bookings/{booking}', 'TripBookingsController@show');
+Route::get('/trip_bookings', 'TripBookingsController@index');
+Route::get('/trip_bookings/create', 'TripBookingsController@create');
+Route::post('/trip_bookings/store', 'TripBookingsController@store');
+Route::put('/trip_bookings/{booking}/update', 'TripBookingsController@update');
+Route::delete('/trip_bookings/{booking}/delete', 'TripBookingsController@destroy');
+Route::get('/trip_bookings/{booking}/edit', 'TripBookingsController@edit');
+Route::get('/trip_bookings/{booking}', 'TripBookingsController@show');

@@ -15,6 +15,11 @@ class ToursController extends Controller
         return view('tours.index')->with(['dataset' => $tours, 'attributes' => $attributes, 'controller' => 'tours', 'key' => [$t->getKeyName()]]);
     }
 
+    public function show(Tour $tour)
+    {
+        return view('tours.show')->with(['record' => $tour]);
+    }
+
     public function create(Tour $tour)
     {
         return view('tours.create')->with(['tour' => $tour, 'method' => 'POST', 'action' => 'tours/store']);

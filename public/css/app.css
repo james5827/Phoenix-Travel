@@ -10022,7 +10022,7 @@ h1 {
   font-size: 5em;
 }
 
-.clickable-table-data:hover {
+.row-link:hover {
   cursor: pointer;
   text-decoration: underline;
   color: deepskyblue;

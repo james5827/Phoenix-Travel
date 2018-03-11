@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class VehiclesController extends Controller
 {
+    /**
+     * @param Vehicle $v
+     * @return $this
+     */
     public function index(Vehicle $v)
     {
         $vehicles = Vehicle::get();
@@ -17,12 +21,19 @@ class VehiclesController extends Controller
         return view('vehicles.index')->with(['dataset' => $vehicles, 'attributes' => $attributes, 'controller' => 'vehicles', 'key' => [$v->getKeyName()]]);
     }
 
+    /**
+     * @param Vehicle $vehicle
+     * @return $this
+     */
     public function show(Vehicle $vehicle)
     {
-        dd($vehicle->trips);
-        return view('vehicles.show')->with(['vehicle' => $vehicle]);
+        return view('vehicles.show')->with(['record' => $vehicle]);
     }
 
+    /**
+     * @param Vehicle $vehicle
+     * @return $this
+     */
     public function create(Vehicle $vehicle)
     {
         $select_boxes = ['Fuel_Type' => [['Diesel'], ['Petrol']]];
@@ -30,6 +41,10 @@ class VehiclesController extends Controller
         return view('vehicles.create')->with(['vehicle' => $vehicle, 'method' => 'POST', 'action' => 'vehicles/store', 'select_boxes' => $select_boxes]);
     }
 
+    /**
+     * @param VehicleRequest $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function store(VehicleRequest $request)
     {
         Vehicle::create($request->all());
@@ -37,12 +52,21 @@ class VehiclesController extends Controller
         return redirect('/vehicles/');
     }
 
+    /**
+     * @param Vehicle $vehicle
+     * @return $this
+     */
     public function edit(Vehicle $vehicle)
     {
         $select_boxes = ['Fuel_Type' => [['Diesel'], ['Petrol']]];
         return view('vehicles.edit')->with(['vehicle' => $vehicle, 'method' => 'PUT', 'action' => 'vehicles/' . $vehicle->Rego_No . '/update', 'select_boxes' => $select_boxes]);
     }
 
+    /**
+     * @param VehicleRequest $request
+     * @param Vehicle $vehicle
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function update(VehicleRequest $request, Vehicle $vehicle)
     {
         $vehicle->update($request->all());
@@ -50,6 +74,10 @@ class VehiclesController extends Controller
         return redirect('/vehicles/');
     }
 
+    /**
+     * @param Vehicle $vehicle
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function destroy(Vehicle $vehicle)
     {
         try {

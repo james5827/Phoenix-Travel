@@ -1,4 +1,3 @@
-
 window.onload = addTableEvents;
 
 function addTableEvents() {
@@ -21,7 +20,7 @@ function addTableEvents() {
 
                     if(height === 0)
                     {
-                        clearInterval(interval)
+                        clearInterval(interval);
                         tr.parentNode.removeChild(tr);
                     }
                 }, 5, div1, div2, tr);
@@ -31,12 +30,16 @@ function addTableEvents() {
 
     let tableRows = document.querySelectorAll('.clickable-table-data');
 
-    for(let i =0; i<tableRows.length; ++i)
-    {
-        tableRows[i].addEventListener('click', function(){
+    let row_links = document.querySelectorAll('.row-link');
+
+    row_links.forEach(function(rowlink){
+        rowlink.addEventListener('click', function(){
             window.location = this.dataset.href;
         });
+    });
 
+    for(let i =0; i<tableRows.length; ++i)
+    {
         let timeout;
         tableRows[i].addEventListener('mouseenter', function () {
             let table_form = document.getElementById("table_delete_form");
@@ -53,7 +56,6 @@ function addTableEvents() {
                 {
                     createTableElements(val);
 
-
                     tr = document.getElementsByClassName('createdRow');
 
                     let newtr;
@@ -66,7 +68,6 @@ function addTableEvents() {
                         let div2 = newtr.lastElementChild.firstElementChild;
 
                         let height1 = 0;
-
 
                         let interval = setInterval(function(div1, div2){
                             div1.style.height = height1 + 'px';
@@ -95,9 +96,7 @@ function addTableEvents() {
                         minonemaxother(newtr, oldtr, val);
                     }
                 }
-
             }, 500, this);
-
         });
 
         tableRows[i].addEventListener('mouseleave', function(){
@@ -183,8 +182,8 @@ function createTableElements(val){
 
     td1.setAttributeNode(colspan1);
     td2.setAttributeNode(colspan2);
-    let updateBtnText = document.createTextNode('Update')
-    let deleteBtnText = document.createTextNode('Delete')
+    let updateBtnText = document.createTextNode('Update');
+    let deleteBtnText = document.createTextNode('Delete');
 
     updateBtn.appendChild(updateBtnText);
     deleteBtn.appendChild(deleteBtnText);
