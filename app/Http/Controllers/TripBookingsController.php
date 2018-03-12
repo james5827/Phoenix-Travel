@@ -20,7 +20,14 @@ class TripBookingsController extends Controller
 
     public function show(TripBooking $booking)
     {
-        return view('bookings.show')->with(['record' => $booking]);
+        $booking->load('trip', 'customer');
+
+        $trip_parent = '/trips/' . $booking->getRelation('trip')->Trip_Id;
+        $customer_parent = 'customers/' . $booking->getRelation('customer')->Customer_Id;
+
+        $parent_relations = ["Trip_Id" => $trip_parent, "Primary_Customer" => $customer_parent];
+
+        return view('bookings.show')->with(['record' => $booking, 'parent_relations' => $parent_relations]);
     }
 
     public function create(TripBooking $booking)

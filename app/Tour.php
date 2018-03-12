@@ -27,4 +27,9 @@ class Tour extends Model
     {
         return $this->hasMany(Trip::class, 'Tour_No');
     }
+
+    public function itineraries()
+    {
+        return $this->hasMany(Itinerary::class, 'Tour_No');
+    }
 }

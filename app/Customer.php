@@ -28,4 +28,9 @@ class Customer extends Model
         'Phone',
         'AuthCustomer'
     ];
+
+    public function tripBookings()
+    {
+        return $this->hasMany(TripBooking::class, 'Primary_Customer');
+    }
 }

@@ -20,7 +20,14 @@ class TripsController extends Controller
 
     public function show(Trip $trip)
     {
-        return view('trips.show')->with(['record' => $trip]);
+        $trip->load(['vehicle', 'tour']);
+
+        $tour_parent = '/tours/' . $trip->getRelation('tour')->Tour_no;
+        $vehicle_parent = '/vehicles/' . $trip->getRelation('vehicle')->Rego_No;
+
+        $parent_relations = ["Tour_No" => $tour_parent, "Rego_No" => $vehicle_parent];
+
+        return view('trips.show')->with(['record' => $trip, 'parent_relations' => $parent_relations]);
     }
 
     public function create(Trip $trip)

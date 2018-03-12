@@ -22,4 +22,9 @@ class Itinerary extends Model
         'Activities',
         'Meals'
     ];
+
+    public function tour()
+    {
+        return $this->belongsTo(Tour::class, 'Tour_No');
+    }
 }

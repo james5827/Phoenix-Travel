@@ -21,9 +21,13 @@ class ItinerariesController extends Controller
     public function show($tour_No, $day_No)
     {
         $itinerary = Itinerary::where('Tour_No', '=', $tour_No )->where('Day_No', '=', $day_No)->first();
-        $attributes = array_keys($itinerary->toArray());
+        $itinerary->load('tour');
 
-        return view('itineraries.show')->with(['record' => $itinerary, 'attributes' => $attributes]);
+        $tour_parent = '/tours/' . $itinerary->getRelation('tour')->Tour_no;
+
+        $parent_relations = ['Tour_No' => $tour_parent];
+
+        return view('itineraries.show')->with(['record' => $itinerary, 'parent_relations' => $parent_relations]);
     }
 
     public function create(Itinerary $itinerary)

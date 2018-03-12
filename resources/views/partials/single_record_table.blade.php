@@ -18,7 +18,7 @@
             @endif>
 
             @foreach($record->getAttributes() as $key => $data)
-                <td class="largetd">{{ $data }}</td>
+                <td class="largetd" id="{{ $key }}">{{ $data }}</td>
             @endforeach
         </tr>
         </tbody>
@@ -27,4 +27,21 @@
 
 @push('scripts')
     <script src="{{ asset('/js/responsivetable.js') }}"></script>
+
+    @if(isset($parent_relations))
+        <script>
+            let parent_relation;
+            let anchor;
+            @foreach($parent_relations as $key => $val)
+                 parent_relation = document.getElementById("{{ $key }}");
+                 anchor = document.createElement("a");
+                 parent_relation.insertBefore(anchor, parent_relation.firstChild);
+                 anchor.appendChild(parent_relation.lastChild);
+                 anchor.setAttribute("href", "{{url($val)}}");
+                 anchor.setAttribute("class", "row-link");
+            @endforeach
+        </script>
+    @endif
 @endpush
+
+

@@ -27,6 +27,8 @@ class VehiclesController extends Controller
      */
     public function show(Vehicle $vehicle)
     {
+        $vehicle->load('trips');
+
         return view('vehicles.show')->with(['record' => $vehicle]);
     }
 

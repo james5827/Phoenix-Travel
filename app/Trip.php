@@ -26,11 +26,16 @@ class Trip extends Model
 
     public function vehicle()
     {
-        return $this->hasOne(Vehicle::class, 'Rego_No');
+        return $this->belongsTo(Vehicle::class, 'Rego_No');
     }
 
     public function tour()
     {
-        return $this->hasOne(Tour::class, 'Tour_No');
+        return $this->belongsTo(Tour::class, 'Tour_No');
+    }
+
+    public function tripBookings()
+    {
+        return $this->hasMany(TripBooking::class, 'Trip_Id');
     }
 }

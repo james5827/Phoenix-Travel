@@ -22,4 +22,14 @@ class TripBooking extends Model
         'Booking_Date',
         'Deposit_Amount'
     ];
+
+    public function trip()
+    {
+        return $this->belongsTo(Trip::class, 'Trip_Id');
+    }
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class, 'Primary_Customer');
+    }
 }
