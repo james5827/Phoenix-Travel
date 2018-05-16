@@ -4,14 +4,14 @@
 
     <div class="form-group">
         <label for="Name">Name:</label>
-        <input id="Name" type="text" class="form-control{{ $errors->has('Name') ? ' is-invalid' : '' }}" name="Name" value="{{ old('Name', ) }}">
+        <input id="Name" type="text" class="form-control{{ $errors->has('Name') ? ' is-invalid' : '' }}" name="Name" value="{{ old('Name', $staff->name) }}">
     </div>
 
     @include('partials._error', ['field' => 'Name'])
 
     <div class="form-group">
         <label for="Email">E-Mail Address</label>
-        <input id="Email" type="Email" class="form-control{{ $errors->has('Email') ? ' is-invalid' : '' }}" name="Email" value="{{ old('email') }}">
+        <input id="Email" type="Email" class="form-control{{ $errors->has('Email') ? ' is-invalid' : '' }}" name="Email" value="{{ old('Email', $staff->email) }}">
     </div>
 
     @include('partials._error', ['field' => 'Email'])
