@@ -4,7 +4,7 @@
 
     <div class="form-group">
         <label for="Name">Name:</label>
-        <input id="Name" type="text" class="form-control{{ $errors->has('Name') ? ' is-invalid' : '' }}" name="Name" value="{{ old('Name') }}">
+        <input id="Name" type="text" class="form-control{{ $errors->has('Name') ? ' is-invalid' : '' }}" name="Name" value="{{ old('Name', ) }}">
     </div>
 
     @include('partials._error', ['field' => 'Name'])
