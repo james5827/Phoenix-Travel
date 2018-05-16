@@ -46,14 +46,6 @@ class StaffController extends Controller
 
     public function update(StaffRequest $request, Staff $staff)
     {
-
-//        $staff->update([
-//            'Name' => $request->Name,
-//            'Email' => $request->Email,
-//            'Password' => bcrypt($request->Password),
-//            'Authorisation_Level' => $request->Authorisation_Level
-//        ]);
-
         $staff->name = $request->Name;
         $staff->email = $request->Email;
         $staff->password = bcrypt($request->Password);
@@ -67,5 +59,6 @@ class StaffController extends Controller
     public function destroy(Staff $staff)
     {
         $staff->delete();
+        return redirect('/staff');
     }
 }
