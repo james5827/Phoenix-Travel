@@ -26,8 +26,7 @@ class StaffRequest extends FormRequest
         return [
             'Name' => 'required',
             'Email' => 'required',
-            'Password' => 'required',
-            'Confirm_Password' => 'required',
+            'Password' => 'required|confirmed',
         ];
     }
 

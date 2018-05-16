@@ -16,7 +16,7 @@ class Staff extends Model
     public $incrementing = false;
     public $timestamps = false;
 
-    protected $fillable = [
+    protected $guarded = [
 
     ];
 }

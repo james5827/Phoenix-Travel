@@ -29,7 +29,12 @@ class StaffController extends Controller
 
     public function store(StaffRequest $request)
     {
-        Staff::create($request->all());
+        Staff::create([
+                'Name' => $request->Name,
+                'Email' => $request->Email,
+                'Password' => bcrypt($request->Password),
+                'Authorisation_Level' => $request->Authorisation_Level
+            ]);
 
         return redirect('/staff');
     }
