@@ -8,9 +8,16 @@ use Illuminate\Http\Request;
 
 class ToursController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(Tour $t)
     {
         $tours = Tour::get();
+		
         $attributes = array_keys($tours[0]->toArray());
         return view('tours.index')->with(['dataset' => $tours, 'attributes' => $attributes, 'controller' => 'tours', 'key' => [$t->getKeyName()]]);
     }

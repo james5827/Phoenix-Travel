@@ -64,3 +64,7 @@ Route::put('/trip_bookings/{booking}/update', 'TripBookingsController@update');
 Route::delete('/trip_bookings/{booking}/delete', 'TripBookingsController@destroy');
 Route::get('/trip_bookings/{booking}/edit', 'TripBookingsController@edit');
 Route::get('/trip_bookings/{booking}', 'TripBookingsController@show');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
