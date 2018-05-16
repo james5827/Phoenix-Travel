@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Staff extends Model
 {
-    protected $primaryKey = 'Id';
+    protected $primaryKey = 'id';
     protected $table = 'users';
     public $incrementing = false;
     public $timestamps = false;

@@ -9,7 +9,7 @@ class StaffController extends Controller
 {
     public function index(Staff $s)
     {
-        $staff = Staff::get(['Id', 'Name', 'Email', 'Authorisation_Level']);
+        $staff = Staff::get(['id', 'Name', 'Email', 'Authorisation_Level']);
         $attributes = array_keys($staff[0]->toArray());
 
         return view('staff.index')->with(['dataset' => $staff, 'attributes' => $attributes, 'controller' => 'staff', 'key' => [$s->getKeyName()]]);
@@ -46,7 +46,22 @@ class StaffController extends Controller
 
     public function update(StaffRequest $request, Staff $staff)
     {
-        $staff->update($request->all());
+
+//        $staff->update([
+//            'Name' => $request->Name,
+//            'Email' => $request->Email,
+//            'Password' => bcrypt($request->Password),
+//            'Authorisation_Level' => $request->Authorisation_Level
+//        ]);
+
+        $staff->name = $request->Name;
+        $staff->email = $request->Email;
+        $staff->password = bcrypt($request->Password);
+        $staff->Authorisation_Level = $request->Authorisation_Level;
+
+        $staff->save();
+
+        return redirect('/staff');
     }
 
     public function destroy(Staff $staff)
