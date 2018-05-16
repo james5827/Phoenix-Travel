@@ -27,7 +27,7 @@ class ItinerariesController extends Controller
 
         $parent_relations = ['Tour_No' => $tour_parent];
 
-        return view('itineraries.show')->with(['record' => $itinerary, 'parent_relations' => $parent_relations]);
+        return view('itineraries.show')->with(['record' => $itinerary, 'parent_relations' => $parent_relations, 'controller' => 'itineraries']);
     }
 
     public function create(Itinerary $itinerary)

@@ -29,7 +29,7 @@ class VehiclesController extends Controller
     {
         $vehicle->load('trips');
 
-        return view('vehicles.show')->with(['record' => $vehicle]);
+        return view('vehicles.show')->with(['record' => $vehicle , 'controller' => 'vehicles']);
     }
 
     /**

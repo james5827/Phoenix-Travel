@@ -48,6 +48,12 @@ Route::get('/itineraries/{Tour_No}/{Day_No}/edit', 'ItinerariesController@edit')
 Route::get('/itineraries/{Tour_No}/{Day_No}', 'ItinerariesController@show');
 
 Route::get('/staff', 'StaffController@index');
+Route::get('/staff/create', 'StaffController@create');
+Route::post('/staff/store', 'StaffController@store');
+Route::put('/staff/{staff}/update', 'StaffController@update');
+Route::delete('/staff/{staff}/delete', 'StaffController@destroy');
+Route::get('/staff/{staff}/edit', 'StaffController@edit');
+Route::get('/staff/{staff}', 'StaffController@show');
 
 Route::get('/customers', 'CustomersController@index');
 Route::get('/customers/create', 'CustomersController@create');

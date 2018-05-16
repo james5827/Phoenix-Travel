@@ -12,9 +12,9 @@
         <tbody>
         <tr class="clickable-table-data"
             @if(is_array($record->getKeyName()))
-                data-href="/{{ $record->getTable() }}/@foreach($record->getKeyName() as $val){{ $record[$val] }}/@endforeach"
+                data-href="/{{ $controller }}/@foreach($record->getKeyName() as $val){{ $record[$val] }}/@endforeach"
             @else
-                data-href="/{{ $record->getTable() }}/{{ $record[$record->getKeyName()] }}/"
+                data-href="/{{ $controller }}/{{ $record[$record->getKeyName()] }}/"
             @endif>
 
             @foreach($record->getAttributes() as $key => $data)

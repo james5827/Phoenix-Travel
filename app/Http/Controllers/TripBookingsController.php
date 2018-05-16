@@ -27,7 +27,7 @@ class TripBookingsController extends Controller
 
         $parent_relations = ["Trip_Id" => $trip_parent, "Primary_Customer" => $customer_parent];
 
-        return view('bookings.show')->with(['record' => $booking, 'parent_relations' => $parent_relations]);
+        return view('bookings.show')->with(['record' => $booking, 'parent_relations' => $parent_relations, 'controller' => 'trip_bookings']);
     }
 
     public function create(TripBooking $booking)

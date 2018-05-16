@@ -5,27 +5,26 @@
             {{ method_field("delete") }}
             <table class="table-condensed table-bordered table-hover" id="responsiveTable">
                 <thead>
-                    <tr>
+                <tr>
+                    @foreach($attributes as $attribute)
+                        <td class="bg-dark text-light border-dark">{{ str_replace("_", " ", $attribute) }}</td>
+                    @endforeach
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($dataset as $data)
+                    <tr class="clickable-table-data row-link" data-href="{{ $controller."/"}}@foreach($key as $k){{ $data->$k }}/@endforeach">
                         @foreach($attributes as $attribute)
-                            <td class="bg-dark text-light border-dark">{{ str_replace("_", " ", $attribute) }}</td>
+                            <td class="largetd">{{ $data->$attribute }}</td>
                         @endforeach
                     </tr>
-                </thead>
-                    <tbody>
-                    @foreach($dataset as $data)
-                        {{ $data->Itinerary_No }}
-                        <tr class="clickable-table-data row-link" data-href="{{ $controller."/"}}@foreach($key as $k){{ $data->$k }}/@endforeach">
-                            @foreach($attributes as $attribute)
-                                <td class="largetd">{{ $data->$attribute }}</td>
-                            @endforeach
-                        </tr>
-                    @endforeach
-                    </tbody>
+                @endforeach
+                </tbody>
             </table>
         </form>
     </div>
 @endif
 
 @push('scripts')
-    <script src="{{ asset('/js/responsivetable.js') }}"></script>
+<script src="{{ asset('/js/responsivetable.js') }}"></script>
 @endpush

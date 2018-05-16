@@ -24,7 +24,7 @@ class ToursController extends Controller
 
     public function show(Tour $tour)
     {
-        return view('tours.show')->with(['record' => $tour]);
+        return view('tours.show')->with(['record' => $tour, 'controller' => 'tours']);
     }
 
     public function create(Tour $tour)
