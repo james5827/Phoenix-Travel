@@ -14,13 +14,12 @@ class CreateTripBookingsTable extends Migration
     public function up()
     {
         Schema::create('trip_bookings', function (Blueprint $table) {
-            $table->char('Trip_Booking_No', 6);
-            $table->char('Trip_Id', 6);
-            $table->char('Primary_Customer', 6);
+            $table->increments('Trip_Booking_No');
+            $table->unsignedInteger('Trip_Id');
+            $table->unsignedInteger('Primary_Customer');
             $table->date('Booking_Date')->nullable();
             $table->decimal('Deposit_Amount', 6,2)->nullable();
 
-            $table->primary('Trip_Booking_No', 'Trip_Booking_pk');
             $table->foreign('Trip_Id', 'TB_Trip_fk')->references('Trip_Id')->on('trips');
             $table->foreign('Primary_Customer', 'TB_Customer_fk')->references('Customer_Id')->on('customers');
         });

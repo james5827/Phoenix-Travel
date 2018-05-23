@@ -14,7 +14,7 @@ class CreateItinerariesTable extends Migration
     public function up()
     {
         Schema::create('itineraries', function (Blueprint $table) {
-            $table->char('Tour_No', 3);
+            $table->unsignedInteger('Tour_No');
             $table->tinyInteger('Day_No');
             $table->char('Hotel_Booking_No', 6);
             $table->string('Activities', 150)->nullable();

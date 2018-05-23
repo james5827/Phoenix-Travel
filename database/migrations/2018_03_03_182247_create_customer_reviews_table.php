@@ -14,8 +14,8 @@ class CreateCustomerReviewsTable extends Migration
     public function up()
     {
         Schema::create('customer_reviews', function (Blueprint $table) {
-            $table->char('Trip_Id', 6);
-            $table->char('Customer_Id', 6);
+            $table->unsignedInteger('Trip_Id');
+            $table->unsignedInteger('Customer_Id');
             $table->tinyInteger('Rating');
             $table->string('General_Feedback', 256);
             $table->string('Likes', 256);

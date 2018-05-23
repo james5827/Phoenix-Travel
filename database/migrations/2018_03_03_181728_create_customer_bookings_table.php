@@ -14,8 +14,8 @@ class CreateCustomerBookingsTable extends Migration
     public function up()
     {
         Schema::create('customer_bookings', function (Blueprint $table) {
-            $table->char('Trip_Booking_No', 6);
-            $table->char('Customer_Id', 6);
+            $table->unsignedInteger('Trip_Booking_No');
+            $table->unsignedInteger('Customer_Id');
 
             $table->primary(['Trip_Booking_No', 'Customer_Id'], 'Customer_Bookings_pk');
             $table->foreign('Trip_Booking_No', 'CB_Trip_Booking_fk')->references('Trip_Booking_No')->on('trip_bookings');
