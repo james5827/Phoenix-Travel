@@ -29,7 +29,10 @@ class CustomersController extends Controller
 
     public function store(CustomerRequest $request)
     {
-        Customer::create($request->all());
+        $request_data = $request->all();
+        $request_data['Password'] = md5($request_data['Password'] . $request['Email']);
+
+        Customer::create($request_data);
         return redirect('/customers/');
     }
 
@@ -40,7 +43,10 @@ class CustomersController extends Controller
 
     public function update(CustomerRequest $request, Customer $customer)
     {
-        $customer->update($request->all());
+        $request_data = $request->all();
+        $request_data['Password'] = md5($request_data['Password'] . $request['Email']);
+
+        $customer->update($request_data);
         return redirect('/customers/');
     }
 

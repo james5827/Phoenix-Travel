@@ -15,6 +15,8 @@ class Customer extends Model
     public $incrementing = false;
     public $timestamps = false;
 
+    protected $hidden = ['Password'];
+
     protected $fillable = [
         'Customer_Id',
         'First_Name',
@@ -25,6 +27,7 @@ class Customer extends Model
         'Suburb',
         'Postcode',
         'Email',
+        'Password',
         'Phone',
         'AuthCustomer'
     ];

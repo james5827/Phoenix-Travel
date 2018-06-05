@@ -55,14 +55,26 @@
         <input type="text" class="form-control" name="Postcode" id="Postcode" value="{{ old('Postcode', $customer->Postcode) }}" placeholder="Customer Postcode">
     </div>
 
-    @include('partials._error', ['field' => 'Trip_Booking_No'])
+    @include('partials._error', ['field' => 'Postcode'])
 
     <div class="form-group">
         <label for="Email">Email</label>
         <input type="text" class="form-control" name="Email" id="Email" value="{{ old('Email', $customer->Email) }}" placeholder="Customer Email">
     </div>
 
-    @include('partials._error', ['field' => 'Postcode'])
+    @include('partials._error', ['field' => 'Email'])
+
+    <div class="form-group">
+        <label for="Password">Password</label>
+        <input type="password" class="form-control" name="Password" id="Password" value="{{ old('Postcode', $customer->Password) }}" placeholder="Customer Password">
+    </div>
+
+    @include('partials._error', ['field' => 'Password'])
+
+    <div class="form-group">
+        <label for="Password">Password</label>
+        <input type="password" class="form-control" name="Password_confirmation" id="Password_confirmation" value="{{ old('Postcode', $customer->Password_confirmation) }}" placeholder="Confirm Password">
+    </div>
 
     <div class="form-group">
         <label for="Phone">Phone</label>

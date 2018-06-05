@@ -33,6 +33,7 @@ class CustomerRequest extends FormRequest
             'Suburb' => 'required',
             'Postcode' => 'required',
             'Email' => 'required',
+            'Password' => 'required|confirmed',
             'Phone' => 'required',
             'AuthCustomer' => 'required'
         ];
@@ -50,6 +51,7 @@ class CustomerRequest extends FormRequest
             'Suburb' => 'Suburb',
             'Postcode' => 'Postcode',
             'Email' => 'Email',
+            'Password' => 'Password',
             'Phone' => 'Phone Number',
             'AuthCustomer' => 'Authorised'
         ];
