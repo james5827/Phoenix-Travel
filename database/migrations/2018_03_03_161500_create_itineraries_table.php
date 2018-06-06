@@ -14,14 +14,14 @@ class CreateItinerariesTable extends Migration
     public function up()
     {
         Schema::create('itineraries', function (Blueprint $table) {
-            $table->unsignedInteger('Tour_No');
-            $table->tinyInteger('Day_No');
-            $table->char('Hotel_Booking_No', 6);
-            $table->string('Activities', 150)->nullable();
-            $table->string('Meals', 150)->nullable();
+            $table->unsignedInteger('tour_no');
+            $table->tinyInteger('day_no');
+            $table->char('hotel_booking_no', 6);
+            $table->string('activities', 150)->nullable();
+            $table->string('meals', 150)->nullable();
 
-            $table->primary(['Tour_No', 'Day_No'], 'Itinerary_pk');
-            $table->foreign('Tour_No', 'I_Tour_fk')->references('Tour_No')->on('tours');
+            $table->primary(['tour_no', 'day_no'], 'itinerary_pk');
+            $table->foreign('tour_no', 'i_tour_fk')->references('tour_no')->on('tours');
         });
     }
 

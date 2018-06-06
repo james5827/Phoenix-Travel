@@ -14,18 +14,18 @@ class CreateCustomersTable extends Migration
     public function up()
     {
         Schema::create('customers', function (Blueprint $table) {
-            $table->increments('Customer_Id');
-            $table->string('First_Name', 35);
-            $table->char('Middle_Initial', 1)->nullable();
-            $table->string('Last_Name', 35);
-            $table->smallInteger('Street_No');
-            $table->string('Street_Name', 50);
-            $table->string('Suburb', 35);
-            $table->integer('Postcode');
-            $table->string('Email',150)->unique();
-            $table->string("Password", 500);
-            $table->string('Phone', 10)->nullable();
-            $table->boolean('AuthCustomer');
+            $table->increments('customer_id');
+            $table->string('first_name', 35);
+            $table->char('middle_initial', 1)->nullable();
+            $table->string('last_name', 35);
+            $table->smallInteger('street_no');
+            $table->string('street_name', 50);
+            $table->string('suburb', 35);
+            $table->integer('postcode');
+            $table->string('email',150)->unique();
+            $table->string("password", 500);
+            $table->string('phone', 10)->nullable();
+            $table->boolean('authcustomer');
         });
     }
 

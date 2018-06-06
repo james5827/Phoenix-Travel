@@ -14,11 +14,11 @@ class CreateToursTable extends Migration
     public function up()
     {
         Schema::create('tours', function (Blueprint $table) {
-            $table->increments('Tour_no');
-            $table->string('Tour_Name', 70);
-            $table->string('Description', 100);
-            $table->float('Duration')->nullable();
-            $table->string('Route_Map', 256)->nullable();
+            $table->increments('tour_no');
+            $table->string('tour_Name', 70);
+            $table->string('description', 100);
+            $table->float('duration')->nullable();
+            $table->string('route_map', 256)->nullable();
         });
     }
 

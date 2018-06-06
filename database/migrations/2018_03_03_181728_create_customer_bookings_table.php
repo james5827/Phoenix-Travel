@@ -14,18 +14,18 @@ class CreateCustomerBookingsTable extends Migration
     public function up()
     {
         Schema::create('customer_bookings', function (Blueprint $table) {
-            $table->unsignedInteger('Trip_Booking_No');
-            $table->unsignedInteger('Customer_Id');
-            $table->boolean('Accepted_Invite');
+            $table->unsignedInteger('trip_booking_no');
+            $table->unsignedInteger('customer_id');
+            $table->boolean('accepted_invite');
 
-            $table->primary(['Trip_Booking_No', 'Customer_Id'], 'Customer_Bookings_pk');
-            $table->foreign('Trip_Booking_No', 'CB_Trip_Booking_fk')
-                ->references('Trip_Booking_No')
+            $table->primary(['trip_booking_no', 'customer_id'], 'customer_bookings_pk');
+            $table->foreign('trip_booking_no', 'cb_trip_booking_fk')
+                ->references('trip_booking_no')
                 ->on('trip_bookings')
                 ->onDelete('cascade');
 
-            $table->foreign('Customer_Id')
-                ->references('Customer_Id')
+            $table->foreign('customer_id')
+                ->references('customer_id')
                 ->on('customers')
                 ->onDelete('cascade');
         });

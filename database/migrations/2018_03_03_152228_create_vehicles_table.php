@@ -14,17 +14,17 @@ class CreateVehiclesTable extends Migration
     public function up()
     {
         Schema::create('vehicles', function (Blueprint $table) {
-            $table->char('Rego_No', 6);
-            $table->string('VIN', 20);
-            $table->string('Make', 20);
-            $table->string('Model', 20);
-            $table->integer('Year');
-            $table->smallInteger('Capacity');
-            $table->string('Fuel_Type', 8)->nullable();
-            $table->string('Equipment', 100)->nullable();
-            $table->char('License_Required', 2);
+            $table->char('rego_no', 6);
+            $table->string('vin', 20);
+            $table->string('make', 20);
+            $table->string('model', 20);
+            $table->integer('year');
+            $table->smallInteger('capacity');
+            $table->string('fuel_type', 8)->nullable();
+            $table->string('equipment', 100)->nullable();
+            $table->char('license_required', 2);
 
-            $table->primary('Rego_No', 'Vehicle_pk');
+            $table->primary('rego_no', 'vehicle_pk');
         });
     }
 
