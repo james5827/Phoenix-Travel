@@ -60,7 +60,7 @@ class TripsController extends Controller
 
         $select_boxes = ["Rego_No" => $vehiclesSel, 'Tour_No' => $toursSel];
 
-        return view('trips.edit')->with(['trip' => $trip, 'method' => 'PUT', 'action' => '/trips/' . $trip->Trip_Id . '/update', 'select_boxes' => $select_boxes]);
+        return view('trips.edit')->with(['trip' => $trip, 'method' => 'PUT', 'action' => '/trips/' . $trip->trip_id . '/update', 'select_boxes' => $select_boxes]);
     }
 
     public function update(TripRequest $request, Trip $trip)

@@ -38,7 +38,7 @@ class CustomersController extends Controller
 
     public function edit(Customer $customer)
     {
-        return view('customers.edit')->with(['customer' => $customer, 'method' => 'PUT', 'action' => 'customers/' . $customer->Customer_Id . '/update']);
+        return view('customers.edit')->with(['customer' => $customer, 'method' => 'PUT', 'action' => 'customers/' . $customer->customer_id . '/update']);
     }
 
     public function update(CustomerRequest $request, Customer $customer)

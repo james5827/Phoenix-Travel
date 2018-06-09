@@ -18,9 +18,9 @@ class ItinerariesController extends Controller
         return view('itineraries.index')->with(['dataset' => $itineraries, 'attributes' => $attributes, 'controller' => 'itineraries', 'key' => $i->getKeyName()]);
     }
 
-    public function show($tour_No, $day_No)
+    public function show($tour_no, $day_no)
     {
-        $itinerary = Itinerary::where('tour_no', '=', $tour_No )->where('day_no', '=', $day_No)->first();
+        $itinerary = Itinerary::where('tour_no', '=', $tour_no )->where('day_no', '=', $day_no)->first();
         $itinerary->load('tour');
 
         $tour_parent = '/tours/' . $itinerary->getRelation('tour')->Tour_no;
@@ -47,15 +47,15 @@ class ItinerariesController extends Controller
         return redirect('itineraries');
     }
 
-    public function edit($tour_No, $day_No)
+    public function edit($tour_no, $day_no)
     {
-        $itinerary = Itinerary::where('tour_no', '=', $tour_No )->where('day_no', '=', $day_No)->first();
+        $itinerary = Itinerary::where('tour_no', '=', $tour_no )->where('day_no', '=', $day_no)->first();
 
         $tour_sel = Tour::select(['tour_no', 'tour_name'])->get()->toArray();
 
         $select_boxes = ['Tour_No' => $tour_sel];
 
-        return view('itineraries.edit')->with(['itinerary' => $itinerary, 'method' => 'PUT', 'action' => 'itineraries/' . $tour_No . '/' . $day_No . '/update', 'select_boxes' => $select_boxes]);
+        return view('itineraries.edit')->with(['itinerary' => $itinerary, 'method' => 'PUT', 'action' => 'itineraries/' . $tour_no . '/' . $day_no . '/update', 'select_boxes' => $select_boxes]);
     }
 
     public function update(ItineraryRequest $request, $tour_no, $day_no)

@@ -55,7 +55,7 @@ class TripBookingsController extends Controller
 
         $select_boxes = ['Trip_Id' => $trip_sel, 'Primary_Customer' => $customer_sel];
 
-        return view('bookings.edit')->with(['Trip_Booking' => $booking, 'method' => 'PUT', 'action' => '/bookings/' . $booking->Trip_Booking_No . '/update', 'select_boxes' => $select_boxes]);
+        return view('bookings.edit')->with(['Trip_Booking' => $booking, 'method' => 'PUT', 'action' => '/bookings/' . $booking->trip_booking_no . '/update', 'select_boxes' => $select_boxes]);
     }
 
     public function update(TripBookingRequest $request, TripBooking $booking)

@@ -61,7 +61,7 @@ class VehiclesController extends Controller
     public function edit(Vehicle $vehicle)
     {
         $select_boxes = ['Fuel_Type' => [['Diesel'], ['Petrol']]];
-        return view('vehicles.edit')->with(['vehicle' => $vehicle, 'method' => 'PUT', 'action' => 'vehicles/' . $vehicle->Rego_No . '/update', 'select_boxes' => $select_boxes]);
+        return view('vehicles.edit')->with(['vehicle' => $vehicle, 'method' => 'PUT', 'action' => 'vehicles/' . $vehicle->rego_no . '/update', 'select_boxes' => $select_boxes]);
     }
 
     /**
