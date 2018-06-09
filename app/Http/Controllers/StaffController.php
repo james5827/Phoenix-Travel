@@ -49,7 +49,7 @@ class StaffController extends Controller
         $staff->name = $request->Name;
         $staff->email = $request->Email;
         $staff->password = bcrypt($request->Password);
-        $staff->Authorisation_Level = $request->Authorisation_Level;
+        $staff->authorisation_level = $request->Authorisation_Level;
 
         $staff->save();
 
