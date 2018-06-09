@@ -11,29 +11,29 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Customer extends Model
 {
-    protected $primaryKey = 'Customer_Id';
+    protected $primaryKey = 'customer_id';
     public $incrementing = false;
     public $timestamps = false;
 
-    protected $hidden = ['Password'];
+    protected $hidden = ['password'];
 
     protected $fillable = [
-        'Customer_Id',
-        'First_Name',
-        'Middle_Initial',
-        'Last_Name',
-        'Street_No',
-        'Street_Name',
-        'Suburb',
-        'Postcode',
-        'Email',
-        'Password',
-        'Phone',
-        'AuthCustomer'
+        'customer_id',
+        'first_name',
+        'middle_initial',
+        'last_name',
+        'street_no',
+        'street_name',
+        'suburb',
+        'postcode',
+        'email',
+        'password',
+        'phone',
+        'authcustomer'
     ];
 
     public function tripBookings()
     {
-        return $this->hasMany(TripBooking::class, 'Primary_Customer');
+        return $this->hasMany(TripBooking::class, 'primary_customer');
     }
 }

@@ -11,25 +11,25 @@ use Illuminate\Database\Eloquent\Model;
  */
 class TripBooking extends Model
 {
-    protected $primaryKey = 'Trip_Booking_No';
+    protected $primaryKey = 'trip_booking_no';
     public $incrementing = false;
     public $timestamps = false;
 
     protected $fillable = [
-        'Trip_Booking_No',
-        'Trip_Id',
-        'Primary_Customer',
-        'Booking_Date',
-        'Deposit_Amount'
+        'trip_booking_no',
+        'trip_id',
+        'primary_customer',
+        'booking_date',
+        'deposit_amount'
     ];
 
     public function trip()
     {
-        return $this->belongsTo(Trip::class, 'Trip_Id');
+        return $this->belongsTo(Trip::class, 'trip_id');
     }
 
     public function customer()
     {
-        return $this->belongsTo(Customer::class, 'Primary_Customer');
+        return $this->belongsTo(Customer::class, 'primary_customer');
     }
 }

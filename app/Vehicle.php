@@ -12,24 +12,24 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Vehicle extends Model
 {
-    protected $primaryKey = 'Rego_No';
+    protected $primaryKey = 'rego_no';
     public $incrementing = false;
     public $timestamps = false;
 
     protected $fillable = [
-        'Rego_No',
-        'VIN',
-        'Make',
-        'Model',
-        'Year',
-        'Capacity',
-        'Fuel_Type',
-        'Equipment',
-        'License_Required'
+        'rego_no',
+        'vin',
+        'make',
+        'model',
+        'year',
+        'capacity',
+        'fuel_type',
+        'equipment',
+        'license_required'
     ];
 
     public function trips()
     {
-        return $this->hasMany(Trip::class, 'Rego_No');
+        return $this->hasMany(Trip::class, 'rego_no');
     }
 }

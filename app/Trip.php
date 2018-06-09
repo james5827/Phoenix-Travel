@@ -11,31 +11,31 @@ use \App\Vehicle;
  */
 class Trip extends Model
 {
-    protected $primaryKey = 'Trip_Id';
+    protected $primaryKey = 'trip_id';
     public $incrementing = false;
     public $timestamps = false;
 
     protected $fillable = [
-        'Trip_Id',
-        'Tour_No',
-        'Rego_No',
-        'Departure_Date',
-        'Max_Passengers',
-        'Standard_Amount'
+        'trip_id',
+        'tour_no',
+        'rego_no',
+        'departure_date',
+        'max_passengers',
+        'standard_amount'
     ];
 
     public function vehicle()
     {
-        return $this->belongsTo(Vehicle::class, 'Rego_No');
+        return $this->belongsTo(Vehicle::class, 'rego_no');
     }
 
     public function tour()
     {
-        return $this->belongsTo(Tour::class, 'Tour_No');
+        return $this->belongsTo(Tour::class, 'tour_no');
     }
 
     public function tripBookings()
     {
-        return $this->hasMany(TripBooking::class, 'Trip_Id');
+        return $this->hasMany(TripBooking::class, 'trip_id');
     }
 }

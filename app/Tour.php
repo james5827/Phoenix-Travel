@@ -11,25 +11,25 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Tour extends Model
 {
-    protected $primaryKey = 'Tour_no';
+    protected $primaryKey = 'tour_no';
     public $incrementing = false;
     public $timestamps = false;
 
     protected $fillable = [
-        'Tour_no',
-        'Tour_Name',
-        'Description',
-        'Duration',
-        'Route_Map'
+        'tour_no',
+        'tour_name',
+        'description',
+        'duration',
+        'route_map'
     ];
 
     public function trips()
     {
-        return $this->hasMany(Trip::class, 'Tour_No');
+        return $this->hasMany(Trip::class, 'tour_no');
     }
 
     public function itineraries()
     {
-        return $this->hasMany(Itinerary::class, 'Tour_No');
+        return $this->hasMany(Itinerary::class, 'tour_no');
     }
 }
