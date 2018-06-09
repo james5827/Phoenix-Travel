@@ -7,13 +7,13 @@
                 <thead>
                 <tr>
                     @foreach($attributes as $attribute)
-                        <td class="bg-dark text-light border-dark">{{ str_replace("_", " ", $attribute) }}</td>
+                        <th class="bg-dark text-light border-dark">{{ str_replace("_", " ", $attribute) }}</th>
                     @endforeach
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($dataset as $data)
-                    <tr class="clickable-table-data row-link" data-href="{{ $controller."/"}}@foreach($key as $k){{ $data->$k }}/@endforeach">
+                    <tr class="clickable-table-data row-link animated-row" data-href="{{ $controller."/"}}@foreach($key as $k){{ $data->$k }}/@endforeach">
                         @foreach($attributes as $attribute)
                             <td class="largetd">{{ $data->$attribute }}</td>
                         @endforeach
