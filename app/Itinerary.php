@@ -11,20 +11,20 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Itinerary extends Model
 {
-    protected $primaryKey = ['Tour_No', 'Day_No'];
+    protected $primaryKey = ['tour_no', 'day_no'];
     public $incrementing = false;
     public $timestamps = false;
 
     protected $fillable = [
-        'Tour_No',
-        'Day_No',
-        'Hotel_Booking_No',
-        'Activities',
-        'Meals'
+        'tour_no',
+        'day_no',
+        'hotel_booking_no',
+        'activities',
+        'meals'
     ];
 
     public function tour()
     {
-        return $this->belongsTo(Tour::class, 'Tour_No');
+        return $this->belongsTo(Tour::class, 'tour_no');
     }
 }
