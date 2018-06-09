@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Customer_Review extends Model
 {
-    protected $primaryKey = ['Trip_Id', 'Customer_Id'];
+    protected $primaryKey = ['trip_id', 'customer_id'];
     public $incrementing = false;
     public $timestamps = false;
 

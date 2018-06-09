@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Customer_Booking extends Model
 {
-    protected $primaryKey = ['Trip_Booking_No', 'Customer_Id'];
+    protected $primaryKey = ['trip_booking_no', 'customer_id'];
     public $incrementing = false;
     public $timestamps = false;
 
