@@ -32,9 +32,9 @@ class TripBookingsController extends Controller
 
     public function create(TripBooking $booking)
     {
-        $trip_sel = Trip::select(['Trip_Id'])->get()->toArray();
+        $trip_sel = Trip::select(['trip_id'])->get()->toArray();
 
-        $customer_sel = Customer::select(['Customer_Id', 'First_Name', 'Last_Name'])->get()->toArray();
+        $customer_sel = Customer::select(['customer_id', 'first_name', 'last_name'])->get()->toArray();
 
         $select_boxes = ['Trip_Id' => $trip_sel, 'Primary_Customer' => $customer_sel];
         return view('bookings.create')->with(['Trip_Booking' => $booking, 'method' => 'POST', 'action' => '/bookings/store', 'select_boxes' => $select_boxes]);
@@ -49,9 +49,9 @@ class TripBookingsController extends Controller
 
     public function edit(TripBooking $booking)
     {
-        $trip_sel = Trip::select(['Trip_Id'])->get()->toArray();
+        $trip_sel = Trip::select(['trip_id'])->get()->toArray();
 
-        $customer_sel = Customer::select(['Customer_Id', 'First_Name', 'Last_Name'])->get()->toArray();
+        $customer_sel = Customer::select(['customer_id', 'first_name', 'last_name'])->get()->toArray();
 
         $select_boxes = ['Trip_Id' => $trip_sel, 'Primary_Customer' => $customer_sel];
 

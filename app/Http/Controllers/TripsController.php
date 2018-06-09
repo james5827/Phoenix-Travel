@@ -32,8 +32,8 @@ class TripsController extends Controller
 
     public function create(Trip $trip)
     {
-        $vehiclesSel = Vehicle::select(['Rego_No', 'Model'])->get()->toArray();
-        $toursSel = Tour::select(['Tour_No', 'Tour_Name'])->get()->toArray();
+        $vehiclesSel = Vehicle::select(['rego_no', 'model'])->get()->toArray();
+        $toursSel = Tour::select(['tour_no', 'tour_name'])->get()->toArray();
 
         $select_boxes = ["Rego_No" => $vehiclesSel, 'Tour_No' => $toursSel];
 
@@ -55,8 +55,8 @@ class TripsController extends Controller
 
     public function edit(Trip $trip)
     {
-        $vehiclesSel = Vehicle::select(['Rego_No', 'Model'])->get()->toArray();
-        $toursSel = Tour::select(['Tour_No', 'Tour_Name'])->get()->toArray();
+        $vehiclesSel = Vehicle::select(['rego_no', 'model'])->get()->toArray();
+        $toursSel = Tour::select(['tour_no', 'tour_name'])->get()->toArray();
 
         $select_boxes = ["Rego_No" => $vehiclesSel, 'Tour_No' => $toursSel];
 

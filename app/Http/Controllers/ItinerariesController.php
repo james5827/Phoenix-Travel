@@ -20,7 +20,7 @@ class ItinerariesController extends Controller
 
     public function show($tour_No, $day_No)
     {
-        $itinerary = Itinerary::where('Tour_No', '=', $tour_No )->where('Day_No', '=', $day_No)->first();
+        $itinerary = Itinerary::where('tour_no', '=', $tour_No )->where('day_no', '=', $day_No)->first();
         $itinerary->load('tour');
 
         $tour_parent = '/tours/' . $itinerary->getRelation('tour')->Tour_no;
@@ -32,7 +32,7 @@ class ItinerariesController extends Controller
 
     public function create(Itinerary $itinerary)
     {
-        $tour_sel = Tour::select(['Tour_No', 'Tour_Name'])->get()->toArray();
+        $tour_sel = Tour::select(['tour_no', 'tour_name'])->get()->toArray();
 
         $select_boxes = ['Tour_No' => $tour_sel];
 
@@ -49,9 +49,9 @@ class ItinerariesController extends Controller
 
     public function edit($tour_No, $day_No)
     {
-        $itinerary = Itinerary::where('Tour_No', '=', $tour_No )->where('Day_No', '=', $day_No)->first();
+        $itinerary = Itinerary::where('tour_no', '=', $tour_No )->where('day_no', '=', $day_No)->first();
 
-        $tour_sel = Tour::select(['Tour_No', 'Tour_Name'])->get()->toArray();
+        $tour_sel = Tour::select(['tour_no', 'tour_name'])->get()->toArray();
 
         $select_boxes = ['Tour_No' => $tour_sel];
 
@@ -60,7 +60,7 @@ class ItinerariesController extends Controller
 
     public function update(ItineraryRequest $request, $tour_no, $day_no)
     {
-        $itinerary = Itinerary::where('Tour_No', '=', $tour_no)->where('Day_No', '=', $day_no);
+        $itinerary = Itinerary::where('tour_no', '=', $tour_no)->where('day_no', '=', $day_no);
 
         $itinerary->update($request->except('_token', '_method'));
 
@@ -69,7 +69,7 @@ class ItinerariesController extends Controller
 
     public function destroy($tour_no, $day_no)
     {
-        $itinerary = Itinerary::where('Tour_No', '=', $tour_no)->where('Day_No', '=', $day_no);
+        $itinerary = Itinerary::where('tour_No', '=', $tour_no)->where('day_No', '=', $day_no);
 
         try {
             $itinerary->delete();
