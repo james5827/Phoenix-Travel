@@ -69,7 +69,7 @@ class ItinerariesController extends Controller
 
     public function destroy($tour_no, $day_no)
     {
-        $itinerary = Itinerary::where('tour_No', '=', $tour_no)->where('day_No', '=', $day_no);
+        $itinerary = Itinerary::where('tour_no', '=', $tour_no)->where('day_no', '=', $day_no);
 
         try {
             $itinerary->delete();
