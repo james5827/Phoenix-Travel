@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TourRequest;
 use App\Tour;
+use App\Trip;
 use Illuminate\Http\Request;
 
 class ToursController extends Controller
@@ -17,14 +18,54 @@ class ToursController extends Controller
     public function index(Tour $t)
     {
         $tours = Tour::get();
-		
+
         $attributes = array_keys($tours[0]->toArray());
         return view('tours.index')->with(['dataset' => $tours, 'attributes' => $attributes, 'controller' => 'tours', 'key' => [$t->getKeyName()]]);
     }
 
     public function show(Tour $tour)
     {
-        return view('tours.show')->with(['record' => $tour, 'controller' => 'tours']);
+        $total_revenue_query = \DB::table('trips')
+            ->selectRaw(
+    'SUM(trips.standard_amount * (
+               SELECT COUNT(*)
+               FROM trip_bookings 
+               INNER JOIN trips ON trip_bookings.trip_id = trips.trip_id 
+               WHERE trips.tour_no = ?
+               AND departure_date < NOW())) as total_revenue', [$tour->tour_no]
+            )->where('trips.tour_no', '=', $tour->tour_no)
+            ->first();
+
+        $projected_revenue_query = \DB::table('trips')
+            ->selectRaw(
+                'SUM(trips.standard_amount * (
+               SELECT COUNT(*)
+               FROM trip_bookings 
+               INNER JOIN trips ON trip_bookings.trip_id = trips.trip_id 
+               WHERE trips.tour_no = ?
+               AND departure_date > NOW())) as total_revenue', [$tour->tour_no]
+            )->where('trips.tour_no', '=', $tour->tour_no)
+            ->first();
+
+        $stats = [
+            'No. of Reviews: ' => $tour->reviews->count(),
+            'Average Rating: ' => $tour->reviews->avg('rating') . ' Stars',
+
+            'No. of Trips: ' => $tour->trips->count(),
+            'Total Bookings: ' => $tour->bookings->count(),
+            'Total Earned Revenue: $' => $total_revenue_query->total_revenue,
+            'Projected Revenue: $' => $projected_revenue_query->total_revenue,
+        ];
+
+//        dd($tour->reviews());
+
+        return view('tours.show')->with([
+            'tour' => $tour->makeVisible('route_map'),
+            'trips' => $tour->trips,
+            'reviews' => $tour->reviews,
+            'itineraries' => $tour->itineraries,
+            'stats' => $stats
+        ]);
     }
 
     public function create(Tour $tour)

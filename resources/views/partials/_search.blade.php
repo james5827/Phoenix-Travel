@@ -12,7 +12,8 @@
         let trs = document.getElementsByTagName('tr');
         let trsArrayLength = trs.length;
 
-        let table = document.getElementById("responsiveTable");
+        {{--let table = document.getElementById({{ $id }});--}}
+        let table = document.getElementsByTagName('table')[0];
 
         table.addEventListener("transitionend", (event)=>{
             if(event.target.style.opacity === "0")
@@ -35,7 +36,7 @@
                             for (let i = 0; i < split.length; ++i) {
                                 htmlString += split[i];
                                 if (split.length - 1 !== i)
-                                    htmlString += `<span style="background-color: #2ede4d; font-weight: bolder; padding: 2px; color: #FFFFFF;">${search.value}</span>`;
+                                    htmlString += `<span style="background-color: #2ede4d; font-weight: bolder; padding: 2px; color: #FFFFFF;border-radius: 5px;">${search.value}</span>`;
                             }
                             tds[x].innerHTML = htmlString;
                         }

@@ -12,6 +12,7 @@ class CustomersController extends Controller
     public function index(Customer $customer)
     {
         $customers = Customer::get();
+
         $attributes = array_keys($customers[0]->toArray());
 
         return view('customers.index')->with(['dataset' => $customers, 'attributes' => $attributes, 'controller' => 'customers', 'key' => [$customer->getKeyName()]]);
@@ -19,6 +20,7 @@ class CustomersController extends Controller
 
     public function show(Customer $customer)
     {
+
         return view('customers.show')->with(['record' => $customer, 'controller' => 'customers']);
     }
 

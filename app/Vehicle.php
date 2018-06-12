@@ -32,4 +32,6 @@ class Vehicle extends Model
     {
         return $this->hasMany(Trip::class, 'rego_no');
     }
+
+
 }

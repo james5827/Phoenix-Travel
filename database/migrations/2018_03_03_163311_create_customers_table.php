@@ -23,7 +23,7 @@ class CreateCustomersTable extends Migration
             $table->string('suburb', 35);
             $table->integer('postcode');
             $table->string('email',150)->unique();
-            $table->string("password", 500);
+            $table->string("password", 32);
             $table->string('phone', 10)->nullable();
             $table->boolean('authcustomer');
         });

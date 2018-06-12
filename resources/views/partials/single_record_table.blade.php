@@ -1,7 +1,7 @@
 <form action="" method="POST" id="table_delete_form">
     {{ method_field("delete") }}
     {{ csrf_field() }}
-    <table class="table-condensed table-bordered table-hover" id="responsiveTable">
+    <table class="table table-bordered table-hover" id="responsiveTable">
         <thead>
         <tr>
             @foreach($record->getAttributes() as $key => $data)

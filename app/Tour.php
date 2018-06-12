@@ -23,6 +23,8 @@ class Tour extends Model
         'route_map'
     ];
 
+    protected $hidden = ['route_map'];
+
     public function trips()
     {
         return $this->hasMany(Trip::class, 'tour_no');
@@ -31,5 +33,15 @@ class Tour extends Model
     public function itineraries()
     {
         return $this->hasMany(Itinerary::class, 'tour_no');
+    }
+
+    public function reviews()
+    {
+        return $this->hasManyThrough('\App\Review', '\App\Trip', 'tour_no', 'trip_id');
+    }
+
+    public function bookings()
+    {
+        return $this->hasManyThrough('\App\TripBooking', '\App\Trip', 'tour_no', 'trip_id');
     }
 }

@@ -12,6 +12,6 @@ class Customer_BookingsTableSeeder extends Seeder
     public function run()
     {
         DB::insert("INSERT INTO customer_bookings VALUES (7214, 1, true)");
-        DB::insert("INSERT INTO customer_bookings VALUES (7214, 3, false)");
+        DB::insert("INSERT INTO customer_bookings VALUES (7214, 2, false)");
     }
 }

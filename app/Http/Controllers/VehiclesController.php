@@ -27,9 +27,16 @@ class VehiclesController extends Controller
      */
     public function show(Vehicle $vehicle)
     {
-        $vehicle->load('trips');
+        $stats = [
+            'Total Trips: ' => $vehicle->trips->count()
+        ];
 
-        return view('vehicles.show')->with(['record' => $vehicle , 'controller' => 'vehicles']);
+        return view('vehicles.show')->with(
+            [
+                'vehicle' => $vehicle ,
+                'trips' => $vehicle->trips,
+                'stats' => $stats
+            ]);
     }
 
     /**

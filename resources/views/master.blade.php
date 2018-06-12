@@ -13,12 +13,24 @@
     @include('partials._nav')
 
 <main>
-    <div class="container">
+    <div class="container-fluid">
+
+
+
         <div class="row">
-            <div class="card col-sm-12">
+
+            <div class="col-sm-2">
+                @yield('left-col')
+            </div>
+
+            <div class="card col-sm-8">
                 <div class="card-body full">
                     @yield('content')
                 </div>
+            </div>
+
+            <div class="col-sm-2">
+                @yield('right-col')
             </div>
         </div>
     </div>

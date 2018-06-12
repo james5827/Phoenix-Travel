@@ -34,8 +34,13 @@ class Trip extends Model
         return $this->belongsTo(Tour::class, 'tour_no');
     }
 
-    public function tripBookings()
+    public function bookings()
     {
         return $this->hasMany(TripBooking::class, 'trip_id');
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, 'trip_id');
     }
 }

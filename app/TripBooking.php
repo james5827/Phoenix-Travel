@@ -28,8 +28,13 @@ class TripBooking extends Model
         return $this->belongsTo(Trip::class, 'trip_id');
     }
 
-    public function customer()
+    public function primaryCustomer()
     {
         return $this->belongsTo(Customer::class, 'primary_customer');
+    }
+
+    public function customers()
+    {
+        return $this->belongsToMany(Customer::class, 'customer_bookings','trip_booking_no','customer_id');
     }
 }

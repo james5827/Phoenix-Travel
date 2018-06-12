@@ -7,6 +7,7 @@ use App\Tour;
 use App\Trip;
 use App\Vehicle;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class TripsController extends Controller
 {
@@ -20,14 +21,32 @@ class TripsController extends Controller
 
     public function show(Trip $trip)
     {
-        $trip->load(['vehicle', 'tour']);
+        $query = $trip->bookings->load('customers', 'primaryCustomer');
 
-        $tour_parent = '/tours/' . $trip->getRelation('tour')->Tour_no;
-        $vehicle_parent = '/vehicles/' . $trip->getRelation('vehicle')->Rego_No;
+        $customers = new Collection();
 
-        $parent_relations = ["Tour_No" => $tour_parent, "Rego_No" => $vehicle_parent];
+        foreach ($query as $key => $val){
+            $customers->push($val->primaryCustomer);
+            foreach ($val->customers as $k => $v){
+                $customers->push($v->makeHidden('password'));
+            }
+        }
 
-        return view('trips.show')->with(['record' => $trip, 'parent_relations' => $parent_relations, 'controller' => 'trips']);
+        $passengers = $customers->count() + 1;
+        $stats = [
+            'Average Rating: ' => $trip->reviews->avg('rating') . ' Stars',
+            'Total Passengers: ' => $passengers,
+            'Space Remaining: ' => $trip->max_passengers - $passengers,
+            'Projected Profits: $' => $trip->bookings->count() * $trip->standard_amount
+        ];
+
+        return view('trips.show')->with([
+            'trip' => $trip,
+            'bookings' => $trip->bookings,
+            'customers' => $customers,
+            'reviews' => $trip->reviews,
+            'stats' => $stats
+        ]);
     }
 
     public function create(Trip $trip)
