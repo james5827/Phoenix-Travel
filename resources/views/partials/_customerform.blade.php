@@ -84,13 +84,34 @@
     @include('partials._error', ['field' => 'Phone'])
 
     <div class="form-group">
-        <button type="button" class="btn btn-success btn-block" value="">Authorized</button>
+        <button type="button" class="btn btn-success btn-block" onclick="toggleBtnValue(this)">Authorized</button>
+        <input type="hidden" name="AuthCustomer" value="true">
     </div>
-
-    <input type="hidden" name="AuthCustomer" value="1">
 
     <div class="text-center">
         <button type="button" class="btn btn-danger col-sm-5" style="margin: 2.5%;">Clear</button>
         <button type="submit" class="btn btn-primary col-sm-5" style="margin: 2.5%;">Commit</button>
     </div>
+
 </form>
+
+@push('scripts')
+<script>
+    function toggleBtnValue(el){
+        console.log(el);
+
+        if(el.classList.contains('btn-success')) {
+            el.classList.remove('btn-success');
+            el.classList.add('btn-danger');
+            el.textContent = "Unauthorized";
+            el.nextElementSibling.value = false;
+        }
+        else{
+            el.classList.remove('btn-danger');
+            el.classList.add('btn-success');
+            el.textContent = "Authorized";
+            el.nextElementSibling.value = true;
+        }
+    }
+</script>
+@endpush

@@ -17,7 +17,17 @@
                 @foreach($dataset as $data)
                     <tr class="clickable-table-data row-link animated-row" data-href="/{{ $controller."/"}}@foreach($key as $k){{ $data->$k }}/@endforeach">
                         @foreach($attributes as $attribute)
-                            <td class="largetd">{{ $data->$attribute }}</td>
+                            @if($attribute === 'authcustomer')
+                                <td class="largetd">
+                                    @if($data->$attribute === 1)
+                                        <button type="button" class="btn btn-success">Authorised</button>
+                                    @else
+                                        <button type="button" class="btn btn-block btn-danger" >Unauthorised</button>
+                                    @endif
+                                </td>
+                            @else
+                                <td class="largetd">{{ $data->$attribute }}</td>
+                            @endif
                         @endforeach
                     </tr>
                 @endforeach

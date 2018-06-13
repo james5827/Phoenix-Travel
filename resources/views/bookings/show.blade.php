@@ -11,7 +11,7 @@
     <h2>Booking Date: <b></b></h2>
     <input type="date" class="form-control" value="{{ $booking->booking_date }}" style="font-size: 2em; text-align: center; font-weight: bold" readonly>
     <br>
-    <h2>Deposit Amount: <b>{{ $booking->deposit_amount }}</b></h2>
+    <h2>Deposit Amount: $<b>{{ $booking->deposit_amount }}</b></h2>
     <br>
 
     <hr>

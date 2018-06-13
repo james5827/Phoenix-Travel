@@ -20,8 +20,17 @@ class CustomersController extends Controller
 
     public function show(Customer $customer)
     {
+        $stats = [
+            'Total Bookings: ' => $customer->bookings->count(),
+            'Total Reviews: ' => $customer->reviews->count()
+        ];
 
-        return view('customers.show')->with(['record' => $customer, 'controller' => 'customers']);
+        return view('customers.show')->with([
+            'customer' => $customer,
+            'bookings' => $customer->bookings,
+            'reviews' => $customer->reviews,
+            'stats' => $stats
+        ]);
     }
 
     public function create(Customer $customer)
@@ -34,7 +43,23 @@ class CustomersController extends Controller
         $request_data = $request->all();
         $request_data['Password'] = md5($request_data['Password'] . $request['Email']);
 
-        Customer::create($request_data);
+        $request_data['AuthCustomer'] = $request_data['AuthCustomer'] === "true" ? true : false;
+
+        Customer::create([
+            'id' => $request_data['Customer_Id'],
+            'first_name' => $request_data['First_Name'],
+            'middle_initial' => $request_data['Middle_Initial'],
+            'last_name' => $request_data['Last_Name'],
+            'street_no' => $request_data['Street_No'],
+            'street_name' => $request_data['Street_Name'],
+            'suburb' => $request_data['Suburb'],
+            'postcode' => $request_data['Postcode'],
+            'email' => $request_data['Email'],
+            'password' => $request_data['Password'],
+            'phone' => $request_data['Phone'],
+            'authcustomer' => $request_data['AuthCustomer'],
+
+        ]);
         return redirect('/customers/');
     }
 
@@ -50,6 +75,10 @@ class CustomersController extends Controller
 
         $customer->update($request_data);
         return redirect('/customers/');
+    }
+
+    public function authorizeCustomer(Customer $customer){
+
     }
 
     public function destroy(Customer $customer)

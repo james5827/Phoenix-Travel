@@ -61,6 +61,7 @@ Route::middleware(['auth'])->group(function(){
     Route::delete('/customers/{customer}/delete', 'CustomersController@destroy');
     Route::get('/customers/{customer}/edit', 'CustomersController@edit');
     Route::get('/customers/{customer}', 'CustomersController@show');
+    Route::post('/customers/{customer}/authorize', 'CustomersController@authorizeCustomer');
 
     Route::get('/trip_bookings', 'TripBookingsController@index');
     Route::get('/trip_bookings/create', 'TripBookingsController@create');

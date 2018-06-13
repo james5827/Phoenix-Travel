@@ -16,9 +16,9 @@ class AuthRoles
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->Authorisation_Level === "Staff")
+        if(Auth::user()->authorisation_level === "Staff")
             return redirect('/home');
-        if(Auth::user()->Authorisation_Level === 'Admin')
+        if(Auth::user()->authorisation_level === 'Admin')
             return $next($request);
 
         return redirect('/home');

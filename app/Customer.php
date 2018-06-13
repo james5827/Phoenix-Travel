@@ -32,8 +32,13 @@ class Customer extends Model
         'authcustomer'
     ];
 
-    public function tripBookings()
+    public function bookings()
     {
         return $this->hasMany(TripBooking::class, 'primary_customer');
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, 'customer_id');
     }
 }
